@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/archivo_black</item>
+        <item>@font/baloo</item>
+        <item>@font/gravitas_one</item>
+        <item>@font/nunito_sans_extrabold</item>
+        <item>@font/roboto_black</item>
+    </array>
+</resources>

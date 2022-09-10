@@ -7,24 +7,26 @@
 
 
     <ImageView
-        android:id="@+id/imageRest"
+        android:id="@+id/imageOfRest"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/KFC" />
+        app:srcCompat="@drawable/kfc" />
 
     <TextView
         android:id="@+id/nameOfRest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/baloo"
         android:text="@string/kfc_dehiwala"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRest" />
+        app:layout_constraintTop_toBottomOf="@+id/imageOfRest" />
 </androidx.constraintlayout.widget.ConstraintLayout>
