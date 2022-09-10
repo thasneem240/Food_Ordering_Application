@@ -1,6 +1,5 @@
 package com.example.food_ordering_application;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Frag_ListOfRestaurants#newInstance} factory method to
+ * Use the {@link Frag_ListOfFoods#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Frag_ListOfRestaurants extends Fragment
+public class Frag_ListOfFoods extends Fragment
 {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -32,15 +31,14 @@ public class Frag_ListOfRestaurants extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<RestData> dataList;
+    private ArrayList<FoodData> dataList;
 
-    public Frag_ListOfRestaurants(ArrayList<RestData> list)
+    public Frag_ListOfFoods(ArrayList<FoodData> dataList)
     {
-        this.dataList = list;
+        this.dataList = dataList;
     }
 
-
-    public Frag_ListOfRestaurants()
+    public Frag_ListOfFoods()
     {
         // Required empty public constructor
     }
@@ -51,12 +49,12 @@ public class Frag_ListOfRestaurants extends Fragment
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Frag_ListOfRestaurants.
+     * @return A new instance of fragment Frag_ListOfFoods.
      */
     // TODO: Rename and change types and number of parameters
-    public static Frag_ListOfRestaurants newInstance(String param1, String param2)
+    public static Frag_ListOfFoods newInstance(String param1, String param2)
     {
-        Frag_ListOfRestaurants fragment = new Frag_ListOfRestaurants();
+        Frag_ListOfFoods fragment = new Frag_ListOfFoods();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,15 +78,15 @@ public class Frag_ListOfRestaurants extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_frag__list_of_restaurants, container, false);
+        View view = inflater.inflate(R.layout.fragment_frag__list_of_foods, container, false);
 
         // Obtain the RecyclerView UI element
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.RestaurantRecyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.FoodRecyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Create Adapter for the recyclerview
-        MyAdapter adapter = new MyAdapter();
+        Frag_ListOfFoods.MyAdapter adapter = new Frag_ListOfFoods.MyAdapter();
 
         // Hook it up
         recyclerView.setAdapter(adapter);
@@ -96,25 +94,27 @@ public class Frag_ListOfRestaurants extends Fragment
         return  view;
     }
 
+
     /* Private inner Class for View holder */
 
     private class MyDataVHolder extends RecyclerView.ViewHolder
     {
 
-        ImageView imageOfRest;
-        TextView nameOfRest;
+        ImageView imageOfFood;
+        TextView foodName,foodPrice;
 
         public MyDataVHolder(@NonNull View itemView)
         {
             super(itemView);
-            imageOfRest = itemView.findViewById(R.id.imageOfRest);
-            nameOfRest = itemView.findViewById(R.id.nameOfSelectRest);
+            imageOfFood = itemView.findViewById(R.id.imageOfFood);
+            foodName = itemView.findViewById(R.id.foodName);
+            foodPrice = itemView.findViewById(R.id.foodPrice);
         }
     }
 
     /* Private inner Class for Adapter */
 
-    private class MyAdapter extends RecyclerView.Adapter<MyDataVHolder>
+    private class MyAdapter extends RecyclerView.Adapter<Frag_ListOfFoods.MyDataVHolder>
     {
 
         @NonNull
@@ -122,9 +122,9 @@ public class Frag_ListOfRestaurants extends Fragment
         public MyDataVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
         {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_restaurant,parent,false);
+            View view = layoutInflater.inflate(R.layout.list_food,parent,false);
 
-            MyDataVHolder myDataVHolder = new MyDataVHolder(view);
+            Frag_ListOfFoods.MyDataVHolder myDataVHolder = new Frag_ListOfFoods.MyDataVHolder(view);
 
             return  myDataVHolder;
         }
@@ -132,29 +132,17 @@ public class Frag_ListOfRestaurants extends Fragment
         @Override
         public void onBindViewHolder(@NonNull MyDataVHolder holder, int position)
         {
-            ImageView imageOfRest = holder.imageOfRest;
-            TextView nameOfRest = holder.nameOfRest;
+            ImageView imageOfFood = holder.imageOfFood;
+            TextView foodName = holder.foodName;
+            TextView foodPrice = holder.foodPrice;
 
             // Single Data
-            RestData restData = dataList.get(position);
+            FoodData foodData = dataList.get(position);
 
-            // Set the TextView
-            nameOfRest.setText(restData.getRestName());
+            imageOfFood.setImageResource(foodData.getFoodImageId());
+            foodName.setText(foodData.getFoodName());
+            foodPrice.setText("LKR " + String.valueOf(foodData.getPrice()));
 
-            // Set the ImageView
-            //imageOfRest.setBackgroundResource(1);
-           // imageOfRest.setImageResource(restData.getRestImageId());
-            imageOfRest.setImageResource(restData.getRestImageId());
-
-            imageOfRest.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View view)
-                {
-                    Intent intent = SecondActivity.getIntent(getActivity(),restData);
-                    startActivity(intent);
-                }
-            });
         }
 
         @Override
@@ -164,5 +152,4 @@ public class Frag_ListOfRestaurants extends Fragment
             return count;
         }
     }
-
 }

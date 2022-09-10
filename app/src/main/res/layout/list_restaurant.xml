@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/kfc" />
 
     <TextView
-        android:id="@+id/nameOfRest"
+        android:id="@+id/nameOfSelectRest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

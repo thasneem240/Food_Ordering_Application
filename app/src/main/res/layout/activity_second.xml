@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/kfc" />
 
     <TextView
-        android:id="@+id/nameOfRest"
+        android:id="@+id/nameOfSelectRest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -45,10 +45,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameOfRest" />
+        app:layout_constraintTop_toBottomOf="@id/nameOfSelectRest" />
 
     <FrameLayout
-        android:id="@+id/ListOfRestContainer"
+        android:id="@+id/ListOfFoodContainer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/texTitle"

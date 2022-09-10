@@ -1,6 +1,8 @@
 package com.example.food_ordering_application;
 
-public class RestData
+import java.io.Serializable;
+
+public class RestData implements Serializable
 {
     private int restImageId;
     private String restName;
