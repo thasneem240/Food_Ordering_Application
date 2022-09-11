@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selectFoodConslayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background1"
@@ -88,13 +89,12 @@
                     android:id="@+id/buttonAddToBucket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="Add to Bucket"
                     android:textAlignment="center"
                     android:textColor="#FF6F00"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

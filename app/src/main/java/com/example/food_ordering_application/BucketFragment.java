@@ -2,12 +2,17 @@ package com.example.food_ordering_application;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,8 +70,60 @@ public class BucketFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bucket, container, false);
 
-        ScrollView bucketScrollView = view.findViewById(R.id.)
+        ScrollView bucketScrollView = view.findViewById(R.id.bucketScrollView);
+        TextView textEmpty = view.findViewById(R.id.textEmpty);
+        RecyclerView bucketRecyclerView = (RecyclerView)view.findViewById(R.id.bucketRecyclerView);
+        TextView itemsTotalTxt = view.findViewById(R.id.itemsTotalTxt);
+        TextView deliveryFeeTxt = view.findViewById(R.id.deliveryFeeTxt);
+        TextView totalCostTxt = view.findViewById(R.id.totalCostTxt);
+        Button checkoutButton = view.findViewById(R.id.checkoutButton);
+
+
+        bucketRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Create Adapter for the recyclerview
+        BucketFragment.MyAdapter adapter = new BucketFragment.MyAdapter();
+
+        // Hook it up
+        bucketRecyclerView.setAdapter(adapter);
+
+
 
         return view;
+    }
+
+    private class MyAdapter extends RecyclerView.Adapter<BucketFragment.MyDataVHolder>
+    {
+
+        @NonNull
+        @Override
+        public MyDataVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+        {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyDataVHolder holder, int position)
+        {
+
+        }
+
+        @Override
+        public int getItemCount()
+        {
+            return 0;
+        }
+    }
+
+
+    /* Private inner Class for View holder */
+
+    private class MyDataVHolder extends RecyclerView.ViewHolder
+    {
+
+        public MyDataVHolder(@NonNull View itemView)
+        {
+            super(itemView);
+        }
     }
 }

@@ -7,7 +7,7 @@ public class FoodData implements Serializable
     private int foodImageId;
     private String foodName;
     private double price;
-    private int itemCount = 0;
+    private int itemCount = 1;
 
 
     public FoodData(int foodImageId, String foodName, double price)

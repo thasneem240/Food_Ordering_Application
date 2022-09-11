@@ -2,6 +2,7 @@ package com.example.food_ordering_application;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,6 +77,8 @@ public class SelectFoodFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_select_food, container, false);
 
+        ConstraintLayout myConstraintLayout = view.findViewById(R.id.selectFoodConslayout);
+
         TextView nameOfSelectedFood = view.findViewById(R.id.nameOfSelectedFood);
         TextView textPrice = view.findViewById(R.id.textPrice);
         TextView totalItem = view.findViewById(R.id.totItem);
@@ -94,7 +100,11 @@ public class SelectFoodFragment extends Fragment
             @Override
             public void onClick(View view)
             {
+                String message = " Successfully Added to the Bucket ";
 
+                //Toast.makeText(getActivity(), " Successfully Added to the Bucket ", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(myConstraintLayout,message,Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
 
@@ -118,7 +128,7 @@ public class SelectFoodFragment extends Fragment
             {
                 int count = Integer.parseInt(totalItem.getText().toString());
 
-                if(count != 0)
+                if(count != 1)
                 {
                     count--;
                     selectFood.setItemCount(count);
