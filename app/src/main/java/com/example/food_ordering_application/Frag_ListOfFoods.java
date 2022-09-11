@@ -1,5 +1,6 @@
 package com.example.food_ordering_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -152,7 +153,8 @@ public class Frag_ListOfFoods extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-
+                    Intent intent = CommonActivity.getIntent(getActivity(),foodData,"SelectFoodFragment");
+                    startActivity(intent);
                 }
             });
 

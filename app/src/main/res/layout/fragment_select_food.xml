@@ -42,7 +42,7 @@
             <ImageView
                 android:id="@+id/imageOfSelectFood"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="500dp"
                 android:src="@drawable/pizza_etc" />
 
             <LinearLayout
@@ -75,26 +75,35 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/plus" />
 
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonAddToBucket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add to Bucket"
+                    android:textAlignment="center"
+                    android:textColor="#FF6F00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/buttonAddToBucket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add to Bucket"
-        android:textAlignment="center"
-        android:textColor="#FF6F00"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -84,7 +84,7 @@ public class SelectFoodFragment extends Fragment
 
 
         nameOfSelectedFood.setText(selectFood.getFoodName());
-        textPrice.setText(selectFood.getFoodName());
+        textPrice.setText("LKR " + String.valueOf(selectFood.getPrice()));
         totalItem.setText(String.valueOf(selectFood.getItemCount()));
         imageOfSelectFood.setImageResource(selectFood.getFoodImageId());
 
@@ -104,9 +104,10 @@ public class SelectFoodFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                int count = Integer.parseInt(totalItem.getText().toString());
+                int count = Integer.parseInt(String.valueOf(totalItem.getText()));
                 count++;
                 selectFood.setItemCount(count);
+                totalItem.setText(String.valueOf(count));
             }
         });
 
@@ -121,6 +122,7 @@ public class SelectFoodFragment extends Fragment
                 {
                     count--;
                     selectFood.setItemCount(count);
+                    totalItem.setText(String.valueOf(count));
                 }
             }
         });
