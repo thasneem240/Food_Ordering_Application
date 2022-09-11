@@ -73,13 +73,57 @@ public class SelectFoodFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_select_food, container, false);
 
-        Button butAddToBucket = view.findViewById(R.id.butAddToBucket);
         TextView nameOfSelectedFood = view.findViewById(R.id.nameOfSelectedFood);
         TextView textPrice = view.findViewById(R.id.textPrice);
-        ImageView ImageOfSelectFood = view.findViewById(R.id.imageOfSelectFood);
+        TextView totalItem = view.findViewById(R.id.totItem);
+        ImageView imageOfSelectFood = view.findViewById(R.id.imageOfSelectFood);
+
+        Button buttonAddToBucket = view.findViewById(R.id.buttonAddToBucket);
+        ImageView imagePlus = view.findViewById(R.id.imagePlus);
+        ImageView imageMinus = view.findViewById(R.id.imageMinus);
 
 
+        nameOfSelectedFood.setText(selectFood.getFoodName());
+        textPrice.setText(selectFood.getFoodName());
+        totalItem.setText(String.valueOf(selectFood.getItemCount()));
+        imageOfSelectFood.setImageResource(selectFood.getFoodImageId());
 
+
+        buttonAddToBucket.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+            }
+        });
+
+
+        imagePlus.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                int count = Integer.parseInt(totalItem.getText().toString());
+                count++;
+                selectFood.setItemCount(count);
+            }
+        });
+
+        imageMinus.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                int count = Integer.parseInt(totalItem.getText().toString());
+
+                if(count != 0)
+                {
+                    count--;
+                    selectFood.setItemCount(count);
+                }
+            }
+        });
 
         return view;
     }

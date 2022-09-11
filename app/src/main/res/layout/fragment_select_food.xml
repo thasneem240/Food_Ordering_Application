@@ -83,7 +83,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/butAddToBucket"
+        android:id="@+id/buttonAddToBucket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add to Bucket"

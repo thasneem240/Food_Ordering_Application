@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -102,6 +103,7 @@ public class Frag_ListOfFoods extends Fragment
 
         ImageView imageOfFood;
         TextView foodName,foodPrice;
+        Button buttonAdd;
 
         public MyDataVHolder(@NonNull View itemView)
         {
@@ -109,6 +111,7 @@ public class Frag_ListOfFoods extends Fragment
             imageOfFood = itemView.findViewById(R.id.imageOfFood);
             foodName = itemView.findViewById(R.id.foodName);
             foodPrice = itemView.findViewById(R.id.foodPrice);
+            buttonAdd = itemView.findViewById(R.id.buttonAdd);
         }
     }
 
@@ -135,6 +138,7 @@ public class Frag_ListOfFoods extends Fragment
             ImageView imageOfFood = holder.imageOfFood;
             TextView foodName = holder.foodName;
             TextView foodPrice = holder.foodPrice;
+            Button buttonAdd = holder.buttonAdd;
 
             // Single Data
             FoodData foodData = dataList.get(position);
@@ -142,6 +146,15 @@ public class Frag_ListOfFoods extends Fragment
             imageOfFood.setImageResource(foodData.getFoodImageId());
             foodName.setText(foodData.getFoodName());
             foodPrice.setText("LKR " + String.valueOf(foodData.getPrice()));
+
+            buttonAdd.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+
+                }
+            });
 
         }
 
