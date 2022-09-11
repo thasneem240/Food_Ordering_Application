@@ -1,10 +1,13 @@
 package com.example.food_ordering_application;
 
-public class FoodData
+import java.io.Serializable;
+
+public class FoodData implements Serializable
 {
     private int foodImageId;
     private String foodName;
     private double price;
+    private int itemCount = 0;
 
 
     public FoodData(int foodImageId, String foodName, double price)
@@ -42,5 +45,15 @@ public class FoodData
     public void setPrice(double price)
     {
         this.price = price;
+    }
+
+    public int getItemCount()
+    {
+        return itemCount;
+    }
+
+    public void setItemCount(int itemCount)
+    {
+        this.itemCount = itemCount;
     }
 }

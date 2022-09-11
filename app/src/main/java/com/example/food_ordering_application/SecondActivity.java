@@ -34,7 +34,7 @@ public class SecondActivity extends AppCompatActivity
        foodDataList1.add(new FoodData(R.drawable.kfc2,"Hot drumlets 6Pcs",1090.00));
        foodDataList1.add(new FoodData(R.drawable.kfc3,"Submarine Regular",650.00));
        foodDataList1.add(new FoodData(R.drawable.kfc4,"Bucket/12Pc",5650.00));
-       foodDataList1.add(new FoodData(R.drawable.kfc5,"1Pc",580.00));
+       foodDataList1.add(new FoodData(R.drawable.kfc5,"Chicken 1Pc",580.00));
        foodDataList1.add(new FoodData(R.drawable.kfc6,"Vegie burger",780.00));
        foodDataList1.add(new FoodData(R.drawable.kfc7,"Pepsi 500ML",200.00));
        foodDataList1.add(new FoodData(R.drawable.kfc8,"7 Up 500ML",250.00));
