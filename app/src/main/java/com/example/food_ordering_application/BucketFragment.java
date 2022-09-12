@@ -11,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +33,14 @@ public class BucketFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ArrayList<BucketData> bucketDataList;
+    private TextView itemsTotalTxt;
+    private TextView totalCostTxt;
+
+    public BucketFragment(ArrayList<BucketData> bucketDataList)
+    {
+        this.bucketDataList = bucketDataList;
+    }
 
     public BucketFragment()
     {
@@ -73,24 +84,65 @@ public class BucketFragment extends Fragment
         ScrollView bucketScrollView = view.findViewById(R.id.bucketScrollView);
         TextView textEmpty = view.findViewById(R.id.textEmpty);
         RecyclerView bucketRecyclerView = (RecyclerView)view.findViewById(R.id.bucketRecyclerView);
-        TextView itemsTotalTxt = view.findViewById(R.id.itemsTotalTxt);
+        itemsTotalTxt = view.findViewById(R.id.itemsTotalTxt);
+        totalCostTxt = view.findViewById(R.id.totalCostTxt);
         TextView deliveryFeeTxt = view.findViewById(R.id.deliveryFeeTxt);
-        TextView totalCostTxt = view.findViewById(R.id.totalCostTxt);
         Button checkoutButton = view.findViewById(R.id.checkoutButton);
 
 
-        bucketRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(!bucketDataList.isEmpty())
+        {
+            bucketScrollView.setVisibility(View.VISIBLE);
+            textEmpty.setVisibility(View.GONE);
 
-        //Create Adapter for the recyclerview
-        BucketFragment.MyAdapter adapter = new BucketFragment.MyAdapter();
+            deliveryFeeTxt.setText(String.valueOf(250));
+            itemsTotalTxt.setText(String.valueOf(getTotal()));
+            totalCostTxt.setText(String.valueOf(getFinalAmount()));
 
-        // Hook it up
-        bucketRecyclerView.setAdapter(adapter);
+            bucketRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+            //Create Adapter for the recyclerview
+            BucketFragment.MyAdapter adapter = new BucketFragment.MyAdapter();
 
+            // Hook it up
+            bucketRecyclerView.setAdapter(adapter);
+        }
+        else
+        {
+            bucketScrollView.setVisibility(View.GONE);
+            textEmpty.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }
+
+
+    /* Private inner Class for View holder */
+
+    private class MyDataVHolder extends RecyclerView.ViewHolder
+    {
+        TextView nameOfFood;
+        TextView eachItemCost;
+        TextView itemTotal;
+        TextView totItemCost;
+        ImageView foodImage;
+        ImageView plus;
+        ImageView minus;
+
+        public MyDataVHolder(@NonNull View itemView)
+        {
+            super(itemView);
+            nameOfFood = itemView.findViewById(R.id.nameOfFood);
+            eachItemCost = itemView.findViewById(R.id.eachItemCost);
+            itemTotal = itemView.findViewById(R.id.itemTotal);
+            totItemCost = itemView.findViewById(R.id.totItemCost);
+            foodImage = itemView.findViewById(R.id.foodImage);
+            plus = itemView.findViewById(R.id.plus);
+            minus = itemView.findViewById(R.id.minus);
+        }
+    }
+
+    /* Private inner Class for Adapter */
 
     private class MyAdapter extends RecyclerView.Adapter<BucketFragment.MyDataVHolder>
     {
@@ -99,31 +151,106 @@ public class BucketFragment extends Fragment
         @Override
         public MyDataVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
         {
-            return null;
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            View view = layoutInflater.inflate(R.layout.view_holder_bucket,parent,false);
+
+            BucketFragment.MyDataVHolder myDataVHolder = new BucketFragment.MyDataVHolder(view);
+
+            return  myDataVHolder;
         }
 
         @Override
         public void onBindViewHolder(@NonNull MyDataVHolder holder, int position)
         {
+            TextView nameOfFood = holder.nameOfFood;
+            TextView eachItemCost = holder.eachItemCost;
+            TextView itemTotal = holder.itemTotal;
+            TextView totItemCost = holder.totItemCost;
+            ImageView foodImage = holder.foodImage;
+            ImageView plus = holder.plus;
+            ImageView minus = holder.minus;
 
+            BucketData bucketData = bucketDataList.get(position);
+
+            FoodData foodData = bucketData.getFoodData();
+
+            foodImage.setImageResource(foodData.getFoodImageId());
+            nameOfFood.setText(foodData.getFoodName());
+
+            // Price of each item
+            double eachItemPrice = foodData.getPrice();
+            eachItemCost.setText(String.valueOf(eachItemPrice));
+
+            itemTotal.setText(String.valueOf(bucketData.getItemCount()));
+
+            // Total cost of particular food
+            double totalCostOfParticularFood = (bucketData.getItemCount() * eachItemPrice);
+            totItemCost.setText(String.valueOf(totalCostOfParticularFood));
+
+
+
+
+            plus.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    int count = Integer.parseInt(String.valueOf(itemTotal.getText()));
+                    count++;
+                    bucketData.setItemCount(count);
+
+                    itemTotal.setText(String.valueOf(count));
+                    totItemCost.setText(String.valueOf(count*eachItemPrice));
+                    itemsTotalTxt.setText(String.valueOf(getTotal()));
+                    totalCostTxt.setText(String.valueOf(getFinalAmount()));
+
+                }
+            });
+
+            minus.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    int count = Integer.parseInt(itemTotal.getText().toString());
+
+                    if(count != 1)
+                    {
+                        count--;
+                        bucketData.setItemCount(count);
+
+                        itemTotal.setText(String.valueOf(count));
+                        totItemCost.setText(String.valueOf(count*eachItemPrice));
+                        itemsTotalTxt.setText(String.valueOf(getTotal()));
+                        totalCostTxt.setText(String.valueOf(getFinalAmount()));
+                    }
+                }
+            });
         }
 
         @Override
         public int getItemCount()
         {
-            return 0;
+            return bucketDataList.size();
         }
     }
 
 
-    /* Private inner Class for View holder */
-
-    private class MyDataVHolder extends RecyclerView.ViewHolder
+    public double getTotal()
     {
+        double total = 0;
 
-        public MyDataVHolder(@NonNull View itemView)
+        for (BucketData data: bucketDataList)
         {
-            super(itemView);
+            total = total + data.getItemCost();
         }
+
+        return total;
     }
+
+    public double getFinalAmount()
+    {
+        return getTotal() + 250;
+    }
+
 }

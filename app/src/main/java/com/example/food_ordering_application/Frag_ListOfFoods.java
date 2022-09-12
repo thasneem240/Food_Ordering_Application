@@ -34,10 +34,12 @@ public class Frag_ListOfFoods extends Fragment
     private String mParam1;
     private String mParam2;
     private ArrayList<FoodData> dataList;
+    private RestData restData;
 
-    public Frag_ListOfFoods(ArrayList<FoodData> dataList)
+    public Frag_ListOfFoods(ArrayList<FoodData> dataList, RestData restData)
     {
         this.dataList = dataList;
+        this.restData = restData;
     }
 
     public Frag_ListOfFoods()
@@ -153,7 +155,7 @@ public class Frag_ListOfFoods extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    Intent intent = CommonActivity.getIntent(getActivity(),foodData,"SelectFoodFragment");
+                    Intent intent = CommonActivity.getIntent(getActivity(),restData,foodData,"SelectFoodFragment");
                     startActivity(intent);
                 }
             });

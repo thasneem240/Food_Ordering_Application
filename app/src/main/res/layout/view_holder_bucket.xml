@@ -29,7 +29,7 @@
         android:layout_marginTop="20dp"
         android:text="Name Of Food"
         android:textColor="#373b54"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/foodImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,6 +70,7 @@
         android:id="@+id/eachItemCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:text="0"
         android:textColor="#373b54"

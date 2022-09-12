@@ -117,7 +117,7 @@ public class SecondActivity extends AppCompatActivity
         // It might already be there!
         if(frag_listOfFoods == null)
         {
-            frag_listOfFoods = new Frag_ListOfFoods(selectedFoodDataList);
+            frag_listOfFoods = new Frag_ListOfFoods(selectedFoodDataList,restData);
             fragmentManager.beginTransaction().add(R.id.ListOfFoodContainer,frag_listOfFoods).commit();
         }
     }

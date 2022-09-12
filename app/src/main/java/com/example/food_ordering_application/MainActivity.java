@@ -3,7 +3,10 @@ package com.example.food_ordering_application;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView imageBucket = findViewById(R.id.imageBucket);
+
         /* Attach Frag_ListOfRestaurants Fragment into this Main Activity */
         FragmentManager fragmentManager = getSupportFragmentManager();
         Frag_ListOfRestaurants fragListRest = (Frag_ListOfRestaurants) fragmentManager.findFragmentById(R.id.ListOfFoodContainer);
@@ -44,6 +49,15 @@ public class MainActivity extends AppCompatActivity
             fragListRest = new Frag_ListOfRestaurants(restData);
             fragmentManager.beginTransaction().add(R.id.ListOfFoodContainer,fragListRest).commit();
         }
+
+        imageBucket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = CommonActivity.getIntent(MainActivity.this,"BucketFragment");
+                startActivity(intent);
+            }
+        });
 
     }
 }

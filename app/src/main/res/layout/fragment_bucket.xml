@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_neutral_variant99"
+    android:background="#2D57E6F8"
     tools:context=".BucketFragment">
 
     <ScrollView
@@ -28,7 +28,7 @@
                 android:layout_marginTop="20dp"
                 android:text="My Bucket"
                 android:textAlignment="center"
-                android:textColor="#00E5FF"
+                android:textColor="@color/orange"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -129,8 +129,8 @@
 
             <Button
                 android:id="@+id/checkoutButton"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_width="287dp"
+                android:layout_height="84dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/rounded_button"
@@ -156,4 +156,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bucketScrollView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

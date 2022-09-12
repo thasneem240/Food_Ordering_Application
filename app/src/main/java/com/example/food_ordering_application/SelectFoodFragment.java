@@ -31,10 +31,12 @@ public class SelectFoodFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RestData selectRest;
     private FoodData selectFood;
 
-    public SelectFoodFragment(FoodData selectFood)
+    public SelectFoodFragment(RestData selectRest,FoodData selectFood)
     {
+        this.selectRest = selectRest;
         this.selectFood = selectFood;
     }
 
@@ -100,6 +102,13 @@ public class SelectFoodFragment extends Fragment
             @Override
             public void onClick(View view)
             {
+                int totItem = Integer.parseInt(totalItem.getText().toString());
+
+                /* Created a bucket Data */
+                BucketData bucketData = new BucketData(selectRest,selectFood,totItem);
+
+                /* Add to Bucket */
+                CommonActivity.addToBucket(bucketData);
                 String message = " Successfully Added to the Bucket ";
 
                 //Toast.makeText(getActivity(), " Successfully Added to the Bucket ", Toast.LENGTH_SHORT).show();
