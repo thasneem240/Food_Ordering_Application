@@ -95,7 +95,7 @@ public class BucketFragment extends Fragment
             bucketScrollView.setVisibility(View.VISIBLE);
             textEmpty.setVisibility(View.GONE);
 
-            deliveryFeeTxt.setText(String.valueOf(250));
+            deliveryFeeTxt.setText(String.valueOf(250.0));
             itemsTotalTxt.setText(String.valueOf(getTotal()));
             totalCostTxt.setText(String.valueOf(getFinalAmount()));
 
