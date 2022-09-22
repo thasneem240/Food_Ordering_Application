@@ -93,6 +93,28 @@ public class CommonActivity extends AppCompatActivity
                     fragmentTransaction.commit();
 
                 }
+                else
+                {
+                    if(fragmentName.equals("LoginFragment"))
+                    {
+                        LoginFragment loginFragment = new LoginFragment();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.commonContainer,loginFragment);
+                        fragmentTransaction.commit();
+
+                    }
+                    else
+                    {
+                        if(fragmentName.equals("RegisterFragment"))
+                        {
+                            RegisterFragment registerFragment = new RegisterFragment();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.commonContainer,registerFragment);
+                            fragmentTransaction.commit();
+
+                        }
+                    }
+                }
             }
         }
 

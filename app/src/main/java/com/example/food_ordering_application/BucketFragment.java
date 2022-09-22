@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -112,6 +113,23 @@ public class BucketFragment extends Fragment
             bucketScrollView.setVisibility(View.GONE);
             textEmpty.setVisibility(View.VISIBLE);
         }
+
+
+        checkoutButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if(MainActivity.getLoginStatus().equals("NO"))
+                {
+                    Toast.makeText(getActivity(), "Please Login in order to Checkout", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), " Checkout Successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         return view;
     }

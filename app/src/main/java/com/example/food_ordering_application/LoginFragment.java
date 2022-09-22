@@ -1,5 +1,6 @@
 package com.example.food_ordering_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -71,6 +72,15 @@ public class LoginFragment extends Fragment {
 
         Button loginButton = view.findViewById(R.id.loginButton);
         TextView txtregister = view.findViewById(R.id.txtRegister);
+
+        txtregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = CommonActivity.getIntent(getActivity(),"RegisterFragment");
+                startActivity(intent);
+            }
+        });
 
 
 

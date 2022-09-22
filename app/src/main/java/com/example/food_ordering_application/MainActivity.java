@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private ArrayList<RestData> restData;
+    private static String loginStatus = "NO";
 
     public MainActivity()
     {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         ImageView imageBucket = findViewById(R.id.imageBucket);
+        ImageView imageAccount = findViewById(R.id.imageAccount);
 
         /* Attach Frag_ListOfRestaurants Fragment into this Main Activity */
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -50,7 +52,8 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().add(R.id.ListOfFoodContainer,fragListRest).commit();
         }
 
-        imageBucket.setOnClickListener(new View.OnClickListener() {
+        imageBucket.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -59,5 +62,27 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        imageAccount.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if(loginStatus.equals("NO"))
+                {
+                    Intent intent = CommonActivity.getIntent(MainActivity.this,"LoginFragment");
+                    startActivity(intent);
+                }
+                else
+                {
+
+                }
+            }
+        });
+
+    }
+
+    public static String getLoginStatus()
+    {
+        return loginStatus;
     }
 }

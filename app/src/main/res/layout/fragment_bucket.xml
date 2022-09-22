@@ -129,14 +129,14 @@
 
             <Button
                 android:id="@+id/checkoutButton"
-                android:layout_width="287dp"
-                android:layout_height="84dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_button"
                 android:text="CheckOut"
+                android:backgroundTint="#D81B60"
                 android:textColor="#1DE9B6"
-                android:textSize="34sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
