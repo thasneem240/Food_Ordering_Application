@@ -23,7 +23,7 @@ public class SecondActivity extends AppCompatActivity
 
     public SecondActivity()
     {
-       foodDataList1 = new ArrayList<>();
+      /* foodDataList1 = new ArrayList<>();
        foodDataList2 = new ArrayList<>();
        foodDataList3 = new ArrayList<>();
        foodDataList4 = new ArrayList<>();
@@ -86,7 +86,7 @@ public class SecondActivity extends AppCompatActivity
        foodDataList6.add(new FoodData(R.drawable.elite7,"Faluda",979.00));
        foodDataList6.add(new FoodData(R.drawable.elite8,"Fresh Lime Juice",352.00));
        foodDataList6.add(new FoodData(R.drawable.elite9,"Chicken Lollipop",869.00));
-       foodDataList6.add(new FoodData(R.drawable.elite10,"prawn 65",1309.00));
+       foodDataList6.add(new FoodData(R.drawable.elite10,"prawn 65",1309.00));*/
 
     }
 

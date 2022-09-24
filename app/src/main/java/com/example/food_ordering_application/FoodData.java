@@ -4,17 +4,29 @@ import java.io.Serializable;
 
 public class FoodData implements Serializable
 {
-    private int foodImageId;
     private String foodName;
+    private int foodImageId;
     private double price;
-    private int itemCount = 1;
+    private int itemCount = 1; // remove this
+    private String restName;
 
 
-    public FoodData(int foodImageId, String foodName, double price)
+    public FoodData(int foodImageId, String foodName, double price, String restName)
     {
         this.foodImageId = foodImageId;
         this.foodName = foodName;
         this.price = price;
+        this.restName = restName;
+    }
+
+    public String getRestName()
+    {
+        return restName;
+    }
+
+    public void setRestName(String restName)
+    {
+        this.restName = restName;
     }
 
     public int getFoodImageId()
