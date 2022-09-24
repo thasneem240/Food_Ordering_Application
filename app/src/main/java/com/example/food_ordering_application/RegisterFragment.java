@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,20 +58,78 @@ public class RegisterFragment extends Fragment
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    
+    private EditText userName;
+    private EditText regEmail;
+    private EditText regPassword;
+    private EditText regRePassword;
+    private Button registerButton;
+    
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) 
+    {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
-        EditText userName = view.findViewById(R.id.userName);
-        EditText regEmail = view.findViewById(R.id.regEmail);
-        EditText regPassword = view.findViewById(R.id.regPassword);
-        EditText regRePassword = view.findViewById(R.id.regRePassword);
-        Button registerButton = view.findViewById(R.id.registerButton);
+        userName = view.findViewById(R.id.userName);
+        regEmail = view.findViewById(R.id.regEmail);
+        regPassword = view.findViewById(R.id.regPassword);
+        regRePassword = view.findViewById(R.id.regRePassword);
+        registerButton = view.findViewById(R.id.registerButton);
+
+
+        registerButton.setOnClickListener(new View.OnClickListener() 
+        {
+            @Override
+            public void onClick(View view) 
+            {
+                String uName = userName.getText().toString();
+                String rMail = regEmail.getText().toString();
+                String rPassword = regPassword.getText().toString();
+                String rePassword = regRePassword.getText().toString();
+                
+                
+                if(checkFieldHasEmpty(uName,rMail,rPassword,rePassword))
+                {
+                    if(rPassword.equals(rePassword))
+                    {
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "Password and RePassword do not match!! " +
+                                "Please re-enter password", Toast.LENGTH_LONG).show();
+                        regPassword.setText("");
+                        regRePassword.setText("");
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Contains Empty Field!!, Please Enter All " +
+                            "the Fields", Toast.LENGTH_SHORT).show();
+                }
+                
+            }
+        });
 
 
         return view;
+    }
+    
+
+    /* Check Whether Field Contains Empty Fields or Not */
+
+    private boolean checkFieldHasEmpty(String uName, String rMail, String rPassword, String rePassword)
+    {
+        boolean isEmpty = true;
+        
+        if(uName.isEmpty() || rMail.isEmpty() || rPassword.isEmpty() || rePassword.isEmpty())
+        {
+            isEmpty = false;
+        }
+        
+        return isEmpty;
     }
 }
