@@ -123,4 +123,8 @@ public class BucketDataList
         return bucketData;
     }
 
+    public void removeBucketData(int position)
+    {
+        bucketList.remove(position);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.food_ordering_application;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -144,6 +145,7 @@ public class BucketFragment extends Fragment
         ImageView foodImage;
         ImageView plus;
         ImageView minus;
+        Button buttonRemove;
 
         public MyDataVHolder(@NonNull View itemView)
         {
@@ -155,6 +157,7 @@ public class BucketFragment extends Fragment
             foodImage = itemView.findViewById(R.id.foodImage);
             plus = itemView.findViewById(R.id.plus);
             minus = itemView.findViewById(R.id.minus);
+            buttonRemove = itemView.findViewById(R.id.buttonRemove);
         }
     }
 
@@ -176,7 +179,7 @@ public class BucketFragment extends Fragment
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyDataVHolder holder, int position)
+        public void onBindViewHolder(@NonNull MyDataVHolder holder, @SuppressLint("RecyclerView") int position)
         {
             TextView nameOfFood = holder.nameOfFood;
             TextView eachItemCost = holder.eachItemCost;
@@ -185,6 +188,8 @@ public class BucketFragment extends Fragment
             ImageView foodImage = holder.foodImage;
             ImageView plus = holder.plus;
             ImageView minus = holder.minus;
+            Button buttonRemove = holder.buttonRemove;
+
 
             BucketData bucketData = bucketDataList.get(position);
 
@@ -240,6 +245,16 @@ public class BucketFragment extends Fragment
                         itemsTotalTxt.setText(String.valueOf(bucketDataList.getTotal()));
                         totalCostTxt.setText(String.valueOf(getFinalAmount()));
                     }
+                }
+            });
+
+
+            buttonRemove.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    bucketDataList.removeBucketData(position);
                 }
             });
         }
