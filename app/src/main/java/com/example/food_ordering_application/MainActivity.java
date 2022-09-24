@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity
 
     public MainActivity()
     {
-        restData = new ArrayList<RestData>();
+        /*restData = new ArrayList<RestData>();
 
         restData.add(new RestData(R.drawable.kfc,"KFC - Dehiwala"));
         restData.add(new RestData(R.drawable.pizzahut,"Pizza hut - Dehiwala"));
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
         restData.add(new RestData(R.drawable.dinemore,"Dinemore - Wellawatte"));
         restData.add(new RestData(R.drawable.royalbakery,"Royal Bakery - Wellawatte"));
         restData.add(new RestData(R.drawable.burgerking,"Burger King - Kollupitiya"));
-        restData.add(new RestData(R.drawable.streetburger,"Street Burger - Dehiwala"));
+        restData.add(new RestData(R.drawable.streetburger,"Street Burger - Dehiwala"));*/
     }
 
     @Override

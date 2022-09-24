@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.food_ordering_application.FoodAppDBSchema.FoodDataTable;
+import com.example.food_ordering_application.FoodAppDBSchema.RestDataTable;
 
 import java.util.ArrayList;
 
@@ -30,10 +31,18 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
                 FoodDataTable.Cols.FOOD_NAME,FoodDataTable.Cols.REST_NAME,FoodDataTable.Cols.FOOD_IMAGE_ID,
                 FoodDataTable.Cols.FOOD_PRICE, FoodDataTable.Cols.FOOD_NAME,FoodDataTable.Cols.REST_NAME );
 
+        String queryForRestTable = String.format("CREATE TABLE %s ( %s TEXT NOT NULL PRIMARY KEY, %s INTEGER);",
+                RestDataTable.NAME,RestDataTable.Cols.Rest_NAME,RestDataTable.Cols.Rest_IMAGE_ID );
+
+
 
         /* Execute the Query */
         sqLiteDatabase.execSQL(queryForFoodTable);
-        loadInitialFoodData();
+        sqLiteDatabase.execSQL(queryForRestTable);
+
+
+        /* When Creating the database It will load the necessary information into the Database */
+        loadInitialData();
     }
 
     @Override
@@ -43,17 +52,47 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
     }
 
 
-    private void loadInitialFoodData()
+    private void loadInitialData()
     {
-        ArrayList<FoodData> InitialFoodDataList = getInitialFoodList();
         SQLiteDatabase db = new FoodAppDBHelper(contextOfApplication).getWritableDatabase();
 
+        ArrayList<FoodData> initialFoodDataList = getInitialFoodList();
+
         /* Add Food List into Database */
-        for (FoodData data: InitialFoodDataList)
+        for (FoodData data: initialFoodDataList)
         {
             addFoodData(data,db);
         }
 
+        ArrayList<RestData> initialRestDataList = getInitialRestList();
+
+        for (RestData data: initialRestDataList)
+        {
+            addRestData(data,db);
+        }
+
+    }
+
+    private ArrayList<RestData> getInitialRestList()
+    {
+        ArrayList<RestData> restDataList = new ArrayList<>();
+
+        restDataList.add(new RestData(R.drawable.kfc,"KFC - Dehiwala"));
+        restDataList.add(new RestData(R.drawable.pizzahut,"Pizza hut - Dehiwala"));
+        restDataList.add(new RestData(R.drawable.mcdonald,"McDonald's - Mount Lavinia"));
+        restDataList.add(new RestData(R.drawable.rioicecream,"Rio Ice Cream - Wellawatte"));
+        restDataList.add(new RestData(R.drawable.elite,"Elite Indian Restaurant - Dehiwala"));
+        restDataList.add(new RestData(R.drawable.cakehut,"Cake Hut - Dehiwala"));
+        restDataList.add(new RestData(R.drawable.dinemore,"Dinemore - Wellawatte"));
+        restDataList.add(new RestData(R.drawable.royalbakery,"Royal Bakery - Wellawatte"));
+        restDataList.add(new RestData(R.drawable.burgerking,"Burger King - Kollupitiya"));
+        restDataList.add(new RestData(R.drawable.streetburger,"Street Burger - Dehiwala"));
+
+        /* Have to Add For New Restaurant List */
+
+
+
+        return restDataList;
     }
 
     private ArrayList<FoodData> getInitialFoodList()
@@ -72,7 +111,7 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
         setFoodListForRestaurant(foodDataList,"Dinemore - Wellawatte");
         setFoodListForRestaurant(foodDataList,"Royal Bakery - Wellawatte");
 
-        /* Have to Add For New Restaurant Food List*/
+        /* Have to Add For New Restaurant Food List */
 
 
 
@@ -184,5 +223,14 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
         cv.put(FoodDataTable.Cols.FOOD_PRICE,foodData.getPrice());
 
         db.insert(FoodDataTable.NAME,null,cv);
+    }
+
+    public void addRestData(RestData restData, SQLiteDatabase db)
+    {
+        ContentValues cv = new ContentValues();
+        cv.put(RestDataTable.Cols.Rest_NAME,restData.getRestName());
+        cv.put(RestDataTable.Cols.Rest_IMAGE_ID,restData.getRestImageId());
+
+        db.insert(RestDataTable.NAME,null,cv);
     }
 }
