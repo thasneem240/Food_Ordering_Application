@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -71,6 +72,8 @@ public class SelectFoodFragment extends Fragment
         }
     }
 
+    private ConstraintLayout myConstraintLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -78,7 +81,7 @@ public class SelectFoodFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_select_food, container, false);
 
-        ConstraintLayout myConstraintLayout = view.findViewById(R.id.selectFoodConslayout);
+        myConstraintLayout = view.findViewById(R.id.selectFoodConslayout);
 
         TextView nameOfSelectedFood = view.findViewById(R.id.nameOfSelectedFood);
         TextView textPrice = view.findViewById(R.id.textPrice);
@@ -106,13 +109,46 @@ public class SelectFoodFragment extends Fragment
                 /* Created a bucket Data */
                 BucketData bucketData = new BucketData(selectRest,selectFood,totItem);
 
-                /* Add to Bucket */
-                FirstActivity_Common.addToBucket(bucketData);
-                String message = " Successfully Added to the Bucket ";
+                BucketDataList bucketDataList = BucketDataList.getInstanceOfBucketList();
 
-                //Toast.makeText(getActivity(), " Successfully Added to the Bucket ", Toast.LENGTH_SHORT).show();
-                Snackbar snackbar = Snackbar.make(myConstraintLayout,message,Snackbar.LENGTH_LONG);
-                snackbar.show();
+                if(bucketDataList.isEmpty())
+                {
+                    bucketDataList.add(bucketData);
+                    showSuccessMessage();
+                }
+                else
+                {
+                    /* Check Whether Contains only one restaurant food items */
+
+                    if(BucketDataList.checkBucket(bucketData))
+                    {
+
+                        String message = " Bucket Already have Different Restaurant Food items, Choose same restaurant food items into the Bucket" +
+                                "OR Empty the Current Bucket And Add this food item in to the Bucket";
+
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+
+                    }
+                    else
+                    {
+                        /* Check Whether Bucket Contains the Same food item */
+                        if(BucketDataList.contains(bucketData))
+                        {
+                            BucketDataList.updateBucketData(bucketData);
+
+                            String message = " Successfully Updated the Bucket ";
+
+                            Snackbar snackbar = Snackbar.make(myConstraintLayout,message,Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                        }
+                        else
+                        {
+                            bucketDataList.add(bucketData);
+                            showSuccessMessage();
+                        }
+                    }
+                }
+
             }
         });
 
@@ -146,5 +182,13 @@ public class SelectFoodFragment extends Fragment
         });
 
         return view;
+    }
+
+    private void showSuccessMessage()
+    {
+        String message = " Successfully Added to the Bucket ";
+
+        Snackbar snackbar = Snackbar.make(myConstraintLayout,message,Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }

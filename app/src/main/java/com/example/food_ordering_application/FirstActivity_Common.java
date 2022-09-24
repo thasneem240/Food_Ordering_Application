@@ -18,7 +18,7 @@ public class FirstActivity_Common extends AppCompatActivity
     private static final String FRAGMENT_NAME = "Name_Of_The_Fragment";
     private FoodData foodData;
     private RestData restData;
-    private static ArrayList<BucketData> bucketList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -87,7 +87,7 @@ public class FirstActivity_Common extends AppCompatActivity
             {
                 if(fragmentName.equals("BucketFragment"))
                 {
-                    BucketFragment bucketFragment = new BucketFragment(bucketList);
+                    BucketFragment bucketFragment = new BucketFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.commonContainer,bucketFragment);
                     fragmentTransaction.commit();
@@ -118,22 +118,6 @@ public class FirstActivity_Common extends AppCompatActivity
             }
         }
 
-    }
-
-
-    public static void addToBucket(BucketData bucketData)
-    {
-        bucketList.add(bucketData);
-    }
-
-    public static void emptyBucket()
-    {
-        bucketList.clear();
-    }
-
-    public static ArrayList<BucketData> getBucketList()
-    {
-        return bucketList;
     }
 
 }

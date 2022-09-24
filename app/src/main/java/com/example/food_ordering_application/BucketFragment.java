@@ -34,18 +34,16 @@ public class BucketFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<BucketData> bucketDataList;
     private TextView itemsTotalTxt;
     private TextView totalCostTxt;
+    private BucketDataList bucketDataList;
+    private double deliveryFee = 250.0;
 
-    public BucketFragment(ArrayList<BucketData> bucketDataList)
-    {
-        this.bucketDataList = bucketDataList;
-    }
 
     public BucketFragment()
     {
         // Required empty public constructor
+        bucketDataList = BucketDataList.getInstanceOfBucketList();
     }
 
     /**
@@ -96,8 +94,8 @@ public class BucketFragment extends Fragment
             bucketScrollView.setVisibility(View.VISIBLE);
             textEmpty.setVisibility(View.GONE);
 
-            deliveryFeeTxt.setText(String.valueOf(250.0));
-            itemsTotalTxt.setText(String.valueOf(getTotal()));
+            deliveryFeeTxt.setText(String.valueOf(deliveryFee));
+            itemsTotalTxt.setText(String.valueOf(bucketDataList.getTotal()));
             totalCostTxt.setText(String.valueOf(getFinalAmount()));
 
             bucketRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -219,7 +217,7 @@ public class BucketFragment extends Fragment
 
                     itemTotal.setText(String.valueOf(count));
                     totItemCost.setText(String.valueOf(count*eachItemPrice));
-                    itemsTotalTxt.setText(String.valueOf(getTotal()));
+                    itemsTotalTxt.setText(String.valueOf(bucketDataList.getTotal()));
                     totalCostTxt.setText(String.valueOf(getFinalAmount()));
 
                 }
@@ -239,7 +237,7 @@ public class BucketFragment extends Fragment
 
                         itemTotal.setText(String.valueOf(count));
                         totItemCost.setText(String.valueOf(count*eachItemPrice));
-                        itemsTotalTxt.setText(String.valueOf(getTotal()));
+                        itemsTotalTxt.setText(String.valueOf(bucketDataList.getTotal()));
                         totalCostTxt.setText(String.valueOf(getFinalAmount()));
                     }
                 }
@@ -254,21 +252,9 @@ public class BucketFragment extends Fragment
     }
 
 
-    public double getTotal()
-    {
-        double total = 0;
-
-        for (BucketData data: bucketDataList)
-        {
-            total = total + data.getItemCost();
-        }
-
-        return total;
-    }
-
     public double getFinalAmount()
     {
-        return getTotal() + 250;
+        return bucketDataList.getTotal() + deliveryFee;
     }
 
 }
