@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class CommonActivity extends AppCompatActivity
+public class FirstActivity_Common extends AppCompatActivity
 {
 
     private static final String CHOICE1 = "Serialized_UserChoice_RestData_Object";
@@ -40,7 +40,7 @@ public class CommonActivity extends AppCompatActivity
 
     public static Intent getIntent(Context context, RestData choice1,FoodData choice2, String fragName)
     {
-        Intent intent = new Intent(context,CommonActivity.class);
+        Intent intent = new Intent(context, FirstActivity_Common.class);
         intent.putExtra(CHOICE1,choice1);
         intent.putExtra(CHOICE2,choice2);
         intent.putExtra(FRAGMENT_NAME,fragName);
@@ -50,7 +50,7 @@ public class CommonActivity extends AppCompatActivity
 
     public static Intent getIntent(Context context, String fragName)
     {
-        Intent intent = new Intent(context,CommonActivity.class);
+        Intent intent = new Intent(context, FirstActivity_Common.class);
         intent.putExtra(FRAGMENT_NAME,fragName);
         return intent;
     }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +34,14 @@ public class Frag_ListOfFoods extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<FoodData> dataList;
     private RestData restData;
+    private ArrayList<FoodData> dataList;
 
-    public Frag_ListOfFoods(ArrayList<FoodData> dataList, RestData restData)
+    public Frag_ListOfFoods(RestData restData,ArrayList<FoodData> dataList)
     {
-        this.dataList = dataList;
         this.restData = restData;
+        this.dataList = dataList;
+
     }
 
     public Frag_ListOfFoods()
@@ -75,6 +77,7 @@ public class Frag_ListOfFoods extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -155,7 +158,7 @@ public class Frag_ListOfFoods extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    Intent intent = CommonActivity.getIntent(getActivity(),restData,foodData,"SelectFoodFragment");
+                    Intent intent = FirstActivity_Common.getIntent(getActivity(),restData,foodData,"SelectFoodFragment");
                     startActivity(intent);
                 }
             });

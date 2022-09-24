@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,13 +33,9 @@ public class Frag_ListOfRestaurants extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<RestData> dataList;
 
-    public Frag_ListOfRestaurants(ArrayList<RestData> list)
-    {
-        this.dataList = list;
-    }
-
+    // Reference to the restDataList Model
+    private RestDataListModel restDataListModel;
 
     public Frag_ListOfRestaurants()
     {
@@ -73,6 +70,15 @@ public class Frag_ListOfRestaurants extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Log.d("Info", "I'm at FragListOfRestaurant : onCreate Method");
+
+        /* Get the Restaurant list from Database */
+        restDataListModel = new RestDataListModel();
+        restDataListModel.loadRestData(getActivity().getApplicationContext());
+
+
+        Log.d("Info", "I'm Exited from FragListOfRestaurant : onCreate Method");
     }
 
     @Override
@@ -136,7 +142,7 @@ public class Frag_ListOfRestaurants extends Fragment
             TextView nameOfRest = holder.nameOfRest;
 
             // Single Data
-            RestData restData = dataList.get(position);
+            RestData restData = restDataListModel.get(position);
 
             // Set the TextView
             nameOfRest.setText(restData.getRestName());
@@ -151,7 +157,7 @@ public class Frag_ListOfRestaurants extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    Intent intent = SecondActivity.getIntent(getActivity(),restData);
+                    Intent intent = ThirdActivity.getIntent(getActivity(),restData);
                     startActivity(intent);
                 }
             });
@@ -160,7 +166,7 @@ public class Frag_ListOfRestaurants extends Fragment
         @Override
         public int getItemCount()
         {
-            int count = dataList.size();
+            int count = restDataListModel.size();
             return count;
         }
     }

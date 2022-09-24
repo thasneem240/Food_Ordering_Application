@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -108,7 +107,7 @@ public class SelectFoodFragment extends Fragment
                 BucketData bucketData = new BucketData(selectRest,selectFood,totItem);
 
                 /* Add to Bucket */
-                CommonActivity.addToBucket(bucketData);
+                FirstActivity_Common.addToBucket(bucketData);
                 String message = " Successfully Added to the Bucket ";
 
                 //Toast.makeText(getActivity(), " Successfully Added to the Bucket ", Toast.LENGTH_SHORT).show();

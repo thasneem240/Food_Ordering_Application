@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view)
             {
-                Intent intent = CommonActivity.getIntent(getActivity(),"RegisterFragment");
+                Intent intent = FirstActivity_Common.getIntent(getActivity(),"RegisterFragment");
                 startActivity(intent);
             }
         });

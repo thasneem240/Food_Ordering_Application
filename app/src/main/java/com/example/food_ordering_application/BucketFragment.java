@@ -120,7 +120,7 @@ public class BucketFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                if(MainActivity.getLoginStatus().equals("NO"))
+                if(SecondActivity.getLoginStatus().equals("NO"))
                 {
                     Toast.makeText(getActivity(), "Please Login in order to Checkout", Toast.LENGTH_SHORT).show();
                 }
