@@ -22,14 +22,14 @@ public class BucketDataList
         return bucketDataList;
     }
 
-    public static boolean contains(BucketData bucketData)
+    public static boolean contains(FoodData foodData)
     {
         boolean isContain = false;
 
         for (BucketData data: bucketList)
         {
-            if(bucketData.getFoodData().getFoodName().equals(data.getFoodData().getFoodName())
-            && bucketData.getFoodData().getRestName().equals(data.getFoodData().getRestName()))
+            if(foodData.getFoodName().equals(data.getFoodData().getFoodName())
+            && foodData.getRestName().equals(data.getFoodData().getRestName()))
             {
                 isContain = true;
 
@@ -52,11 +52,11 @@ public class BucketDataList
         bucketList.add(bucketData);
     }
 
-    public static boolean checkBucket(BucketData bucketData)
+    public static boolean checkBucket(RestData restData)
     {
         boolean isContainSameRestFood = false;
 
-      if(!bucketList.get(0).getRestData().getRestName().equals(bucketData.getRestData().getRestName()))
+      if(!bucketList.get(0).getRestData().getRestName().equals(restData.getRestName()))
       {
           Log.d("Info", "checkBucket: isContainSameRestFood = TRUE ");
           isContainSameRestFood = true;
@@ -105,4 +105,22 @@ public class BucketDataList
 
         return total;
     }
+
+    public BucketData getBucket(FoodData foodData)
+    {
+        BucketData bucketData = null;
+
+        for (BucketData data: bucketList)
+        {
+            if(foodData.getFoodName().equals(data.getFoodData().getFoodName())
+                    && foodData.getRestName().equals(data.getFoodData().getRestName()))
+            {
+                bucketData = data;
+                break;
+            }
+        }
+
+        return bucketData;
+    }
+
 }

@@ -33,11 +33,13 @@ public class SelectFoodFragment extends Fragment
     private String mParam2;
     private RestData selectRest;
     private FoodData selectFood;
+    BucketDataList bucketDataList;
 
     public SelectFoodFragment(RestData selectRest,FoodData selectFood)
     {
         this.selectRest = selectRest;
         this.selectFood = selectFood;
+        bucketDataList = BucketDataList.getInstanceOfBucketList();
     }
 
     public SelectFoodFragment()
@@ -95,8 +97,29 @@ public class SelectFoodFragment extends Fragment
 
         nameOfSelectedFood.setText(selectFood.getFoodName());
         textPrice.setText("LKR " + String.valueOf(selectFood.getPrice()));
-        totalItem.setText(String.valueOf(selectFood.getItemCount()));
         imageOfSelectFood.setImageResource(selectFood.getFoodImageId());
+
+        if(bucketDataList.isEmpty())
+        {
+            totalItem.setText(String.valueOf(1));
+        }
+        else
+        {
+            /* Check Whether Bucket Contains the Same food item */
+            if(BucketDataList.contains(selectFood))
+            {
+                BucketData bucketData = bucketDataList.getBucket(selectFood);
+
+                totalItem.setText(String.valueOf(bucketData.getItemCount()));
+
+            }
+            else
+            {
+                totalItem.setText(String.valueOf(1));
+            }
+        }
+
+        //totalItem.setText(String.valueOf(selectFood.getItemCount()));
 
 
         buttonAddToBucket.setOnClickListener(new View.OnClickListener()
@@ -109,7 +132,6 @@ public class SelectFoodFragment extends Fragment
                 /* Created a bucket Data */
                 BucketData bucketData = new BucketData(selectRest,selectFood,totItem);
 
-                BucketDataList bucketDataList = BucketDataList.getInstanceOfBucketList();
 
                 if(bucketDataList.isEmpty())
                 {
@@ -120,7 +142,7 @@ public class SelectFoodFragment extends Fragment
                 {
                     /* Check Whether Contains only one restaurant food items */
 
-                    if(BucketDataList.checkBucket(bucketData))
+                    if(BucketDataList.checkBucket(selectRest))
                     {
 
                         String message = " Bucket Already have Different Restaurant Food items, Choose same restaurant food items into the Bucket" +
@@ -132,7 +154,7 @@ public class SelectFoodFragment extends Fragment
                     else
                     {
                         /* Check Whether Bucket Contains the Same food item */
-                        if(BucketDataList.contains(bucketData))
+                        if(BucketDataList.contains(selectFood))
                         {
                             BucketDataList.updateBucketData(bucketData);
 
