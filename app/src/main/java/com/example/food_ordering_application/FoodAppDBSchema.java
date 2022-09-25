@@ -58,9 +58,13 @@ public class FoodAppDBSchema
         {
             public static final String EMAIlADDRESS = "bucket_EmailAddress";
             public static final String DATETIME = "bucket_DateTime";
-            public static final String FOODNAME = "FoodName";
-            public static final String RESTNAME = "RestName";
+            public static final String FOODNAME = "foodName";
+            public static final String RESTNAME = "restName";
             public static final String ITEMCOUNT = "itemCount";
+            public static final String FOODID = "foodId";
+            public static final String RESTID = "restId";
+            public static final String FOODPRICE = "foodPrice";
+
         }
     }
 

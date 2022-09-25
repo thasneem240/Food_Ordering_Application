@@ -61,9 +61,10 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
         /* Table For Bucket Data */
 
         String queryForBucketDataTable = String.format("CREATE TABLE %s ( %s TEXT NOT NULL,%s TEXT NOT NULL," +
-                        "%s TEXT NOT NULL, %s TEXT, %s INTEGER, PRIMARY KEY(%s,%s,%s) )",
+                        "%s TEXT NOT NULL, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER, %s REAL, PRIMARY KEY(%s,%s,%s) )",
                 BucketTable.NAME,BucketTable.Cols.EMAIlADDRESS,BucketTable.Cols.DATETIME,BucketTable.Cols.FOODNAME,
-        BucketTable.Cols.RESTNAME,BucketTable.Cols.ITEMCOUNT, BucketTable.NAME,BucketTable.Cols.EMAIlADDRESS,
+        BucketTable.Cols.RESTNAME,BucketTable.Cols.ITEMCOUNT,BucketTable.Cols.FOODID,BucketTable.Cols.RESTID,
+                BucketTable.Cols.FOODPRICE,BucketTable.Cols.EMAIlADDRESS,
                 BucketTable.Cols.DATETIME,BucketTable.Cols.FOODNAME);
 
 

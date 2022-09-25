@@ -54,7 +54,8 @@ public class RestDataListModel {
         Log.d("Info", "I'm exited from loadRestData Method ");
     }
 
-    private List<RestData> getAllRestData() {
+    private List<RestData> getAllRestData()
+    {
         ArrayList<RestData> restList = new ArrayList<>();
 
         Cursor cursor = db.query(RestDataTable.NAME, null, null,
@@ -64,11 +65,13 @@ public class RestDataListModel {
 
         try {
             restDataCursor.moveToFirst();
-            while (!restDataCursor.isAfterLast()) {
+            while (!restDataCursor.isAfterLast())
+            {
                 restList.add(restDataCursor.getRestData());
                 restDataCursor.moveToNext();
             }
-        } finally {
+        } finally
+        {
             cursor.close();
         }
 

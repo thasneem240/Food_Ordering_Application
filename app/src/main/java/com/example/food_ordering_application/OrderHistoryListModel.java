@@ -7,12 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.example.food_ordering_application.FoodAppDBSchema.OrderHistoryTable;
 
 public class OrderHistoryListModel
 {
     private SQLiteDatabase db;
-    private static ArrayList<OrderHistory> orderHistoryList;
+    private static List<OrderHistory> orderHistoryList;
 
     public OrderHistoryListModel()
     {
@@ -34,9 +36,9 @@ public class OrderHistoryListModel
     }
 
 
-    private ArrayList<OrderHistory> getAllOrderHistoryData()
+    private List<OrderHistory> getAllOrderHistoryData()
     {
-        ArrayList<OrderHistory> orderList = new ArrayList<>();
+        List<OrderHistory> orderList = new ArrayList<>();
 
         Cursor cursor = db.query(OrderHistoryTable.NAME, null, null,
                 null, null, null, null);
