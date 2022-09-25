@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.util.ArrayList;
-
 public class FirstActivity_Common extends AppCompatActivity
 {
 
@@ -24,7 +22,7 @@ public class FirstActivity_Common extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_common);
+        setContentView(R.layout.activity_first_common);
 
 
         Intent intent = getIntent();

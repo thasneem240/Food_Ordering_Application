@@ -27,7 +27,7 @@ public class ThirdActivity extends AppCompatActivity
     {
         Log.d("Info", "I'm in ThirdActivity onCreate Method ");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
 
         imageOfSelectRest = findViewById(R.id.imageOfSelectRest);
         nameOfSelectRest = findViewById(R.id.nameOfSelectRest);

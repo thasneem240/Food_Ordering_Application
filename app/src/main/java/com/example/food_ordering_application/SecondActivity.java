@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-
 public class SecondActivity extends AppCompatActivity
 {
 
@@ -20,7 +18,7 @@ public class SecondActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
         ImageView imageBucket = findViewById(R.id.imageBucket);
         ImageView imageAccount = findViewById(R.id.imageAccount);

@@ -4,59 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E1F5FE"
-    tools:context=".ThirdActivity">
-
-
-    <ImageView
-        android:id="@+id/imageOfSelectRest"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/kfc" />
+    android:background = "@color/orange"
+    tools:context=".SecondActivity">
 
     <TextView
-        android:id="@+id/nameOfSelectRest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/baloo"
-        android:text="@string/kfc_dehiwala"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageOfSelectRest" />
-
-    <TextView
-        android:id="@+id/texTitle"
+        android:id="@+id/ListRest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="@string/picked_for_you"
-        android:textAlignment="viewStart"
-        android:textColor="@color/purple_700"
-        android:textSize="24sp"
+        android:fontFamily="@font/archivo_black"
+        android:text="@string/list_of_restaurants"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameOfSelectRest" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <FrameLayout
         android:id="@+id/ListOfFoodContainer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/texTitle"
+        app:layout_constraintTop_toBottomOf="@id/ListRest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/myLinearLayout">
 
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/myLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#00BFA5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageBucket"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/bucket_icon"
+            android:paddingLeft="100dp"
+            android:paddingRight="80dp"
+            />
+
+        <ImageView
+            android:id="@+id/imageAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/account_icon"
+            />
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
