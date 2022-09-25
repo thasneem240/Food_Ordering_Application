@@ -100,4 +100,21 @@ public class RegUserListModel
 
         return isContain;
     }
+
+
+    public RegUser getRegUser(String emailAddress)
+    {
+        RegUser regUser = null;
+
+        for (RegUser user: regUserList)
+        {
+            if(user.getEmailAddress().equals(emailAddress))
+            {
+                regUser = user;
+                break;
+            }
+        }
+
+        return regUser;
+    }
 }

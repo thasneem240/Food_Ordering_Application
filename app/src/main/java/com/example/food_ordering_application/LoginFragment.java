@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +24,7 @@ public class LoginFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private RegUserListModel regUserListModel;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,6 +60,9 @@ public class LoginFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        regUserListModel = new RegUserListModel();
+        regUserListModel.loadRegUserData(getActivity().getApplicationContext());
     }
 
     @Override
@@ -77,8 +82,61 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view)
             {
+                email.setText("");
+                password.setText("");
+
                 Intent intent = FirstActivity_Common.getIntent(getActivity(),"RegisterFragment");
                 startActivity(intent);
+            }
+        });
+
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                String logEmail = email.getText().toString();
+                String logPassword = password.getText().toString();
+
+                /* Validate the Input */
+
+                if(checkFieldHasEmpty(logEmail,logPassword))
+                {
+                    RegUser regUser = regUserListModel.getRegUser(logEmail);
+
+                    if(regUser == null)
+                    {
+                        showErrorMessage();
+                        password.setText("");
+                    }
+                    else
+                    {
+                        if(regUser.getPassword().equals(logPassword))
+                        {
+                            // Fully Validated
+
+                            showSuccessMessage();
+                            email.setText("");
+                            password.setText("");
+
+                            SecondActivity.setLoginStatus("YES");
+
+                        }
+                        else
+                        {
+                            showErrorMessage();
+                            password.setText("");
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Contains Empty Field!!, Please Enter All " +
+                            "the Fields", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -88,4 +146,32 @@ public class LoginFragment extends Fragment {
 
         return view;
     }
+
+
+    private boolean checkFieldHasEmpty(String logEmail,String logPassword)
+    {
+        boolean isEmpty = true;
+
+        if(logEmail.isEmpty() || logPassword.isEmpty() )
+        {
+            isEmpty = false;
+        }
+
+        return isEmpty;
+    }
+
+    private void showSuccessMessage()
+    {
+        String message = " You are Successfully Logged in";
+
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    private void showErrorMessage()
+    {
+        String message = "Login Failed!! Invalid User Name OR Password ";
+
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
 }

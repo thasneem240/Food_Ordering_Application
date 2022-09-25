@@ -11,7 +11,6 @@ import android.widget.ImageView;
 public class SecondActivity extends AppCompatActivity
 {
 
-    //private ArrayList<RestData> restData;
     private static String loginStatus = "NO";
 
     @Override
@@ -66,5 +65,10 @@ public class SecondActivity extends AppCompatActivity
     public static String getLoginStatus()
     {
         return loginStatus;
+    }
+
+    public static void setLoginStatus(String status)
+    {
+        loginStatus = status;
     }
 }
