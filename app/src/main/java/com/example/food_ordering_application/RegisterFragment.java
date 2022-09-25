@@ -4,12 +4,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,9 +32,12 @@ public class RegisterFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RegUserListModel regUserListModel;
 
-    public RegisterFragment() {
+    public RegisterFragment()
+    {
         // Required empty public constructor
+
     }
 
     /**
@@ -57,6 +65,9 @@ public class RegisterFragment extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        regUserListModel = new RegUserListModel();
+        regUserListModel.loadRegUserData(getActivity().getApplicationContext());
     }
     
     private EditText userName;
@@ -89,21 +100,58 @@ public class RegisterFragment extends Fragment
                 String rMail = regEmail.getText().toString();
                 String rPassword = regPassword.getText().toString();
                 String rePassword = regRePassword.getText().toString();
-                
-                
+
+                /* Create Object of RegUser */
+
+                RegUser regUser = new RegUser(rMail,uName,rPassword);
+
+                /* Validate the Input */
+
                 if(checkFieldHasEmpty(uName,rMail,rPassword,rePassword))
                 {
-                    if(rPassword.equals(rePassword))
+                    /* Validate the Email Address */
+                    if(Patterns.EMAIL_ADDRESS.matcher(rMail).matches())
                     {
+                        if(rPassword.equals(rePassword))
+                        {
+                            // Fully verified Input
+
+                            /* Empty database */
+                            if(regUserListModel.isEmpty())
+                            {
+                                regUserListModel.addRegUserData(regUser);
+                                showSuccessMessage();
+                            }
+                            else
+                            {
+                                /* Check Whether Database has the same Email Address */
+                                if(regUserListModel.containsSameEmail(rMail))
+                                {
+                                    showErrorMessage();
+                                    regEmail.setText("");
+                                }
+                                else
+                                {
+                                    regUserListModel.addRegUserData(regUser);
+                                    showSuccessMessage();
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(), "Password and RePassword do not match!! " +
+                                    "Please re-enter password", Toast.LENGTH_LONG).show();
+                            regPassword.setText("");
+                            regRePassword.setText("");
+                        }
 
                     }
                     else
                     {
-                        Toast.makeText(getActivity(), "Password and RePassword do not match!! " +
-                                "Please re-enter password", Toast.LENGTH_LONG).show();
-                        regPassword.setText("");
-                        regRePassword.setText("");
+                        Toast.makeText(getActivity(), "Invalid Email Address!!", Toast.LENGTH_SHORT).show();
                     }
+
                 }
                 else
                 {
@@ -131,5 +179,20 @@ public class RegisterFragment extends Fragment
         }
         
         return isEmpty;
+    }
+
+
+    private void showSuccessMessage()
+    {
+        String message = "  Registration completed Successfully ";
+
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    private void showErrorMessage()
+    {
+        String message = "  Registration Failed!! A user with this email Address already exists ";
+
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 }

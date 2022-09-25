@@ -66,7 +66,8 @@ public class RegUserListModel
 
         regUserList.add(regUser);
 
-
+        Log.d("Info", ": " + regUser.getUserName() + regUser.getEmailAddress()+
+        regUser.getPassword());
 
         ContentValues cv = new ContentValues();
         cv.put(UserDataTable.Cols.USER_EMAIL,regUser.getEmailAddress());
@@ -76,4 +77,27 @@ public class RegUserListModel
         db.insert(UserDataTable.NAME,null,cv);
     }
 
+
+    public boolean isEmpty()
+    {
+        return regUserList.isEmpty();
+    }
+
+
+
+    public boolean containsSameEmail(String emailAddress)
+    {
+        boolean isContain = false;
+
+        for (RegUser user: regUserList)
+        {
+            if(user.getEmailAddress().equals(emailAddress))
+            {
+                isContain = true;
+                break;
+            }
+        }
+
+        return isContain;
+    }
 }
