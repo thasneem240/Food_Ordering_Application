@@ -2,13 +2,13 @@ package com.example.food_ordering_application;
 
 public class RegUser
 {
-    private String userName;
     private String emailAddress;
+    private String userName;
     private String password;
 
 
 
-    public RegUser(String userName, String emailAddress, String password)
+    public RegUser(String emailAddress, String userName, String password)
     {
         this.userName = userName;
         this.emailAddress = emailAddress;

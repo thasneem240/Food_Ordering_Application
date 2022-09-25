@@ -24,4 +24,16 @@ public class FoodAppDBSchema
             public static final String Rest_IMAGE_ID = "restImageId";
         }
     }
+
+
+    public static class UserDataTable
+    {
+        public static final String NAME = "UserData";
+        public static class Cols
+        {
+            public static final String USER_EMAIL = "userEmail";
+            public static final String USER_NAME = "userName";
+            public static final String USER_PASSWORD = "userPassword";
+        }
+    }
 }
