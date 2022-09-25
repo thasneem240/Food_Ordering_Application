@@ -265,6 +265,7 @@ public class BucketFragment extends Fragment
                     if(bucketDataList.isEmpty())
                     {
                         bucketScrollView.setVisibility(View.GONE);
+
                         textEmpty.setVisibility(View.VISIBLE);
                     }
                     else
