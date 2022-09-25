@@ -8,6 +8,8 @@ public class BucketData implements Serializable
     private FoodData foodData;
     private int itemCount;
     private double itemCost;
+    private String emailAddress;
+    private String dateTime;
 
     public BucketData(RestData restData, FoodData foodData, int itemCount)
     {
@@ -50,6 +52,26 @@ public class BucketData implements Serializable
     public int getItemCount()
     {
         return itemCount;
+    }
+
+    public String getEmailAddress()
+    {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress)
+    {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getDateTime()
+    {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime)
+    {
+        this.dateTime = dateTime;
     }
 
     public void setItemCount(int itemCount)

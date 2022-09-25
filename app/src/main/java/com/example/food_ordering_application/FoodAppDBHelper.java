@@ -9,6 +9,8 @@ import android.util.Log;
 import com.example.food_ordering_application.FoodAppDBSchema.FoodDataTable;
 import com.example.food_ordering_application.FoodAppDBSchema.RestDataTable;
 import com.example.food_ordering_application.FoodAppDBSchema.UserDataTable;
+import com.example.food_ordering_application.FoodAppDBSchema.OrderHistoryTable;
+import com.example.food_ordering_application.FoodAppDBSchema.BucketTable;
 
 import java.util.ArrayList;
 
@@ -48,10 +50,28 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
                 UserDataTable.Cols.USER_PASSWORD);
 
 
+        /* Table For Order History */
+
+        String queryForOrderHistoryTable = String.format("CREATE TABLE %s ( %s TEXT NOT NULL,%s TEXT NOT NULL," +
+                        "%s REAL, %s REAL,PRIMARY KEY(%s,%s) )",OrderHistoryTable.NAME,
+                OrderHistoryTable.Cols.EMAIlADDRESS,OrderHistoryTable.Cols.DATETIME,OrderHistoryTable.Cols.TOTALCOST,
+                OrderHistoryTable.Cols.DELIVERYFEE,OrderHistoryTable.Cols.EMAIlADDRESS,OrderHistoryTable.Cols.DATETIME);
+
+
+        /* Table For Bucket Data */
+
+        String queryForBucketDataTable = String.format("CREATE TABLE %s ( %s TEXT NOT NULL,%s TEXT NOT NULL," +
+                        "%s TEXT NOT NULL, %s TEXT, %s INTEGER, PRIMARY KEY(%s,%s,%s) )",
+                BucketTable.NAME,BucketTable.Cols.EMAIlADDRESS,BucketTable.Cols.DATETIME,BucketTable.Cols.FOODNAME,
+        BucketTable.Cols.RESTNAME,BucketTable.Cols.ITEMCOUNT, BucketTable.NAME,BucketTable.Cols.EMAIlADDRESS,
+                BucketTable.Cols.DATETIME,BucketTable.Cols.FOODNAME);
+
+
         /* Execute the Query */
         sqLiteDatabase.execSQL(queryForFoodTable);
         sqLiteDatabase.execSQL(queryForRestTable);
         sqLiteDatabase.execSQL(queryForUserTable);
+        sqLiteDatabase.execSQL(queryForOrderHistoryTable);
 
 
         Log.d("Info", "I'm Exited From FoodAppDBHelper : onCreate Method ");

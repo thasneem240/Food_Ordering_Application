@@ -36,4 +36,33 @@ public class FoodAppDBSchema
             public static final String USER_PASSWORD = "userPassword";
         }
     }
+
+
+    public static class OrderHistoryTable
+    {
+        public static final String NAME = "OrderHistory";
+        public static class Cols
+        {
+            public static final String EMAIlADDRESS = "EmailAddress";
+            public static final String DATETIME = "dateTime";
+            public static final String TOTALCOST = "totalCost";
+            public static final String DELIVERYFEE = "deleveryFee";
+        }
+    }
+
+
+    public static class BucketTable
+    {
+        public static final String NAME = "BucketList";
+        public static class Cols
+        {
+            public static final String EMAIlADDRESS = "bucket_EmailAddress";
+            public static final String DATETIME = "bucket_DateTime";
+            public static final String FOODNAME = "FoodName";
+            public static final String RESTNAME = "RestName";
+            public static final String ITEMCOUNT = "itemCount";
+        }
+    }
+
+
 }

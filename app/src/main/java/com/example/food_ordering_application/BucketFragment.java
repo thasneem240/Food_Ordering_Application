@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -131,12 +134,29 @@ public class BucketFragment extends Fragment
                 else
                 {
                     Toast.makeText(getActivity(), " Checkout Successful", Toast.LENGTH_SHORT).show();
+                    String dateTime = getCurrentDateTime();
+
+                    Log.d("DATE", "onClick: " + dateTime);
                 }
             }
         });
 
         return view;
     }
+
+
+    private String getCurrentDateTime()
+    {
+        Calendar calendar = Calendar.getInstance();
+        String pattern = "EEEE , dd-MMM-yyyy hh:mm:ss a";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        String dateTime = simpleDateFormat.format(calendar.getTime());
+
+        return dateTime;
+    }
+
+
 
 
     /* Private inner Class for View holder */
