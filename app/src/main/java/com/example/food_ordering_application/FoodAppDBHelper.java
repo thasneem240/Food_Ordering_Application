@@ -48,7 +48,6 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
                 UserDataTable.Cols.USER_PASSWORD);
 
 
-
         /* Execute the Query */
         sqLiteDatabase.execSQL(queryForFoodTable);
         sqLiteDatabase.execSQL(queryForRestTable);
