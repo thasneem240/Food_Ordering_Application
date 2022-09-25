@@ -119,7 +119,12 @@ public class LoginFragment extends Fragment {
                             email.setText("");
                             password.setText("");
 
-                            SecondActivity.setLoginStatus("YES");
+                           /* SecondActivity.setLoginStatus("YES");
+                            SecondActivity.setCurrentUser(regUser);*/
+
+                            Intent intent = SecondActivity.getIntent(getActivity(),"YES",regUser);
+                            startActivity(intent);
+
 
                         }
                         else

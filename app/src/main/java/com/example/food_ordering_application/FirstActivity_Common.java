@@ -14,8 +14,10 @@ public class FirstActivity_Common extends AppCompatActivity
     private static final String CHOICE1 = "Serialized_UserChoice_RestData_Object";
     private static final String CHOICE2 = "Serialized_UserChoice_FoodData_Object";
     private static final String FRAGMENT_NAME = "Name_Of_The_Fragment";
+    private static final String CURRENTUSER = "CurrentRegisteredUser";
     private FoodData foodData;
     private RestData restData;
+    private RegUser regUser;
 
 
     @Override
@@ -29,6 +31,7 @@ public class FirstActivity_Common extends AppCompatActivity
         String fragmentName = intent.getStringExtra(FRAGMENT_NAME);
         restData = (RestData) intent.getSerializableExtra(CHOICE1);
         foodData = (FoodData) intent.getSerializableExtra(CHOICE2);
+        regUser = (RegUser) intent.getSerializableExtra(CURRENTUSER);
 
         selectFragment(fragmentName);
 
@@ -50,6 +53,15 @@ public class FirstActivity_Common extends AppCompatActivity
     {
         Intent intent = new Intent(context, FirstActivity_Common.class);
         intent.putExtra(FRAGMENT_NAME,fragName);
+        return intent;
+    }
+
+    public static Intent getIntent(Context context, String fragName, RegUser regUser)
+    {
+        Intent intent = new Intent(context, FirstActivity_Common.class);
+        intent.putExtra(FRAGMENT_NAME,fragName);
+        intent.putExtra(CURRENTUSER,regUser);
+
         return intent;
     }
 
@@ -110,6 +122,17 @@ public class FirstActivity_Common extends AppCompatActivity
                             fragmentTransaction.replace(R.id.commonContainer,registerFragment);
                             fragmentTransaction.commit();
 
+                        }
+                        else
+                        {
+                            if(fragmentName.equals("AccountFragment"))
+                            {
+                                AccountFragment accountFragment = new AccountFragment(regUser);
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.commonContainer,accountFragment);
+                                fragmentTransaction.commit();
+
+                            }
                         }
                     }
                 }

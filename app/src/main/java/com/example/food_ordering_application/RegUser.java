@@ -1,6 +1,8 @@
 package com.example.food_ordering_application;
 
-public class RegUser
+import java.io.Serializable;
+
+public class RegUser implements Serializable
 {
     private String emailAddress;
     private String userName;
