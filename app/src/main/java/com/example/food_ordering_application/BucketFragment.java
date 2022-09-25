@@ -40,6 +40,11 @@ public class BucketFragment extends Fragment
     private BucketDataList bucketDataList;
     private double deliveryFee = 250.0;
 
+    private BucketFragment.MyAdapter adapter;
+    private ScrollView bucketScrollView;
+    private TextView textEmpty;
+
+
 
     public BucketFragment()
     {
@@ -81,8 +86,8 @@ public class BucketFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bucket, container, false);
 
-        ScrollView bucketScrollView = view.findViewById(R.id.bucketScrollView);
-        TextView textEmpty = view.findViewById(R.id.textEmpty);
+        bucketScrollView = view.findViewById(R.id.bucketScrollView);
+        textEmpty = view.findViewById(R.id.textEmpty);
         RecyclerView bucketRecyclerView = (RecyclerView)view.findViewById(R.id.bucketRecyclerView);
         itemsTotalTxt = view.findViewById(R.id.itemsTotalTxt);
         totalCostTxt = view.findViewById(R.id.totalCostTxt);
@@ -102,7 +107,7 @@ public class BucketFragment extends Fragment
             bucketRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
             //Create Adapter for the recyclerview
-            BucketFragment.MyAdapter adapter = new BucketFragment.MyAdapter();
+            adapter = new BucketFragment.MyAdapter();
 
             // Hook it up
             bucketRecyclerView.setAdapter(adapter);
@@ -255,6 +260,20 @@ public class BucketFragment extends Fragment
                 public void onClick(View view)
                 {
                     bucketDataList.removeBucketData(position);
+                    adapter.notifyItemRemoved(position);
+
+                    if(bucketDataList.isEmpty())
+                    {
+                        bucketScrollView.setVisibility(View.GONE);
+                        textEmpty.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        itemsTotalTxt.setText(String.valueOf(bucketDataList.getTotal()));
+                        totalCostTxt.setText(String.valueOf(getFinalAmount()));
+                    }
+
+
                 }
             });
         }
