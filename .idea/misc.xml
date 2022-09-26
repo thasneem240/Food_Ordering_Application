@@ -11,7 +11,7 @@
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_common.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_first_common.xml" value="0.2869791666666667" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_second.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_second.xml" value="0.33" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_third.xml" value="0.25" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_bucket.xml" value="0.33" />
@@ -29,6 +29,7 @@
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_breakdown.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_bucket.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_order_history.xml" value="0.1" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_special_menu.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -7,27 +7,39 @@
     android:background = "@color/orange"
     tools:context=".SecondActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="10dp"
+        android:id="@+id/specialMenuRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListSpecialMenu" />
+
     <TextView
-        android:id="@+id/ListRest"
+        android:padding="10dp"
+        android:id="@+id/ListSpecialMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/archivo_black"
-        android:text="@string/list_of_restaurants"
+        android:text="Special Menu"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
 
     <FrameLayout
+        android:padding="10dp"
         android:id="@+id/ListOfFoodContainer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/ListRest"
+        app:layout_constraintTop_toBottomOf="@id/specialMenuRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/myLinearLayout">
@@ -38,9 +50,9 @@
         android:id="@+id/myLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="#00BFA5"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#00BFA5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -49,17 +61,15 @@
             android:id="@+id/imageBucket"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/bucket_icon"
             android:paddingLeft="100dp"
             android:paddingRight="80dp"
-            />
+            android:src="@drawable/bucket_icon" />
 
         <ImageView
             android:id="@+id/imageAccount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/account_icon"
-            />
+            android:src="@drawable/account_icon" />
 
 
     </LinearLayout>

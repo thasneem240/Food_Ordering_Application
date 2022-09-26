@@ -164,6 +164,23 @@ public class RestDataListModel {
 
     }
 
+
+    public RestData getRestData(String restName)
+    {
+        RestData restData = null;
+
+        for (RestData data: restDataList)
+        {
+            if(data.getRestName().equals(restName))
+            {
+                restData = data;
+                break;
+            }
+        }
+
+        return restData;
+    }
+
 }
 
 
