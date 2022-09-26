@@ -10,40 +10,45 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         >
 
         <ImageView
-            android:id="@+id/orderRestImage"
+            android:id="@+id/breakFoodImage"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:src="@drawable/dinemore"></ImageView>
+            android:src="@drawable/kfc6">
+
+        </ImageView>
 
 
         <TextView
-            android:id="@+id/orderRestName"
+            android:id="@+id/breakFoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@id/orderRestImage"
-            android:layout_toRightOf="@id/orderRestImage"
+            android:layout_toRightOf="@id/breakFoodImage"
             android:paddingBottom="5dp"
-            android:text="Dinemore - Wellewatta"
+            android:text="Burger"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            >
 
         </TextView>
 
         <TextView
-            android:id="@+id/order_TotalBucket"
+            android:id="@+id/break_TotalFoodItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/orderRestName"
+            android:layout_below="@id/breakFoodName"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/orderRestImage"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/breakFoodImage"
+            android:paddingBottom="20dp"
             android:text="3 items"
             android:textSize="15sp"
 
@@ -52,45 +57,53 @@
         </TextView>
 
         <TextView
-            android:id="@+id/orderTotalPrice"
+            android:id="@+id/multiply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/order_TotalBucket"
+            android:layout_below="@id/breakFoodName"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/orderRestImage"
-            android:text="LKR 1353.00"
+            android:layout_toRightOf="@id/break_TotalFoodItem"
+            android:text="*"
+            android:textColor="@color/orange"
+            android:textSize="15sp"
+
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/breakFoodPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakFoodName"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/multiply"
+            android:text="LKR 800.00"
+            android:textColor="#D50E74"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/breakFoodTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/break_TotalFoodItem"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/breakFoodImage"
+            android:text="LKR 2400.00"
             android:textSize="17sp"
             android:textStyle="bold">
 
         </TextView>
 
 
-        <TextView
-            android:id="@+id/order_Date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/orderTotalPrice"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/orderRestImage"
-            android:text="2022.09.26"
-            android:textColor="#0088FF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-
-            ></TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/order_Date"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/orderRestImage"
-            android:text="Completed"
-            android:textSize="15sp"
-            android:textColor="#E53935"
-            android:textStyle="bold"
-
-            ></TextView>
 
 
 

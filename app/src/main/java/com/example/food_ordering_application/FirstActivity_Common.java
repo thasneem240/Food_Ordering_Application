@@ -19,10 +19,12 @@ public class FirstActivity_Common extends AppCompatActivity
     private static final String FRAGMENT_NAME = "Name_Of_The_Fragment";
     private static final String CURRENTUSER = "CurrentRegisteredUser";
     private static final String ORDERHISTORYLIST = "Order_History_LIST";
+    private static final String POSITION = "position";
     private FoodData foodData;
     private RestData restData;
     private RegUser regUser;
     private ArrayList<OrderHistory> orderHistoryArrayList;
+    private int position;
 
 
     @Override
@@ -38,6 +40,7 @@ public class FirstActivity_Common extends AppCompatActivity
         foodData = (FoodData) intent.getSerializableExtra(CHOICE2);
         regUser = (RegUser) intent.getSerializableExtra(CURRENTUSER);
         orderHistoryArrayList = ( ArrayList<OrderHistory>)intent.getSerializableExtra(ORDERHISTORYLIST);
+        position = intent.getIntExtra(POSITION,0);
 
         selectFragment(fragmentName);
 
@@ -77,6 +80,16 @@ public class FirstActivity_Common extends AppCompatActivity
         Intent intent = new Intent(context, FirstActivity_Common.class);
         intent.putExtra(FRAGMENT_NAME,fragName);
         intent.putExtra(ORDERHISTORYLIST,orderHistoryList);
+
+        return intent;
+    }
+
+    public static Intent getIntent(Context context, String fragName, ArrayList<OrderHistory> orderHistoryList, int position)
+    {
+        Intent intent = new Intent(context, FirstActivity_Common.class);
+        intent.putExtra(FRAGMENT_NAME,fragName);
+        intent.putExtra(ORDERHISTORYLIST,orderHistoryList);
+        intent.putExtra(POSITION,position);
 
         return intent;
     }
@@ -154,11 +167,25 @@ public class FirstActivity_Common extends AppCompatActivity
                                 if(fragmentName.equals("FragmentOrderHistory"))
                                 {
                                     Log.d("FragmentOrderHistory", "selectFragment: " + orderHistoryArrayList);
+
                                     FragmentOrderHistory fragmentOrderHistory = new FragmentOrderHistory(orderHistoryArrayList);
                                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                                     fragmentTransaction.replace(R.id.commonContainer,fragmentOrderHistory);
                                     fragmentTransaction.commit();
 
+                                }
+                                else
+                                {
+                                    if(fragmentName.equals("FragmentCostBreakdown"))
+                                    {
+                                        Log.d("FragmentCostBreakdown", "selectFragment: " + orderHistoryArrayList + " position :" + position);
+
+                                        FragmentCostBreakdown fragmentCostBreakdown = new FragmentCostBreakdown(orderHistoryArrayList,position);
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.commonContainer,fragmentCostBreakdown);
+                                        fragmentTransaction.commit();
+
+                                    }
                                 }
                             }
                         }

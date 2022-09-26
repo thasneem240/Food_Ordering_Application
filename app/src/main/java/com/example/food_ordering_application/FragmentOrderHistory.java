@@ -1,5 +1,7 @@
 package com.example.food_ordering_application;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -151,7 +153,7 @@ public class FragmentOrderHistory extends Fragment
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyDataVHolder holder, int position)
+        public void onBindViewHolder(@NonNull MyDataVHolder holder, @SuppressLint("RecyclerView") int position)
         {
             ImageView orderRestImage = holder.orderRestImage;
             TextView orderRestName = holder.orderRestName;
@@ -167,6 +169,19 @@ public class FragmentOrderHistory extends Fragment
             order_TotalBucket.setText(String.valueOf(singleOrderHistory.getTotalBucket() + " items"));
             order_TotalPrice.setText( "LKR " + String.valueOf(singleOrderHistory.getFinalAmount()) );
             order_Date.setText(singleOrderHistory.getDateTime());
+
+
+            orderRestImage.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    Intent intent = FirstActivity_Common.getIntent(getActivity(),
+                            "FragmentCostBreakdown",orderHistoryList,position);
+
+                    startActivity(intent);
+                }
+            });
 
         }
 
