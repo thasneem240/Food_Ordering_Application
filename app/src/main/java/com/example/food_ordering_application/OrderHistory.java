@@ -1,8 +1,9 @@
 package com.example.food_ordering_application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class OrderHistory
+public class OrderHistory implements Serializable
 {
     private String emailAddress;
     private String dateTime;
@@ -81,5 +82,10 @@ public class OrderHistory
     public int getTotalBucket()
     {
         return bucketDataList.size();
+    }
+
+    public double getFinalAmount()
+    {
+        return totalCost + deliveryFee;
     }
 }

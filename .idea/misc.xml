@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/drawable/peron_icon.xml" value="0.285" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout-v31/fragment_bucket.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_common.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_first_common.xml" value="0.2869791666666667" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_second.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/activity_third.xml" value="0.25" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_frag__list_of_restaurants.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_frag_getting_start.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_order_history.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_select_food.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_show_order_history.xml" value="0.36666666666666664" />
@@ -33,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.35260416666666666" />
+      </ProjectState>
+    </option>
   </component>
 </project>

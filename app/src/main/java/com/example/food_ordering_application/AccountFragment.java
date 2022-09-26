@@ -112,7 +112,9 @@ public class AccountFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-
+                Intent intent = FirstActivity_Common.getIntent(getActivity(),
+                        "FragmentOrderHistory",orderHistoryListOfUser);
+                startActivity(intent);
             }
         });
 
