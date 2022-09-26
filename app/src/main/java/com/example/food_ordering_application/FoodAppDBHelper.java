@@ -73,6 +73,7 @@ public class FoodAppDBHelper extends SQLiteOpenHelper
         sqLiteDatabase.execSQL(queryForRestTable);
         sqLiteDatabase.execSQL(queryForUserTable);
         sqLiteDatabase.execSQL(queryForOrderHistoryTable);
+        sqLiteDatabase.execSQL(queryForBucketDataTable);
 
 
         Log.d("Info", "I'm Exited From FoodAppDBHelper : onCreate Method ");

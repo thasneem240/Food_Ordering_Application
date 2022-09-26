@@ -46,6 +46,8 @@ public class BucketFragment extends Fragment
     private BucketFragment.MyAdapter adapter;
     private ScrollView bucketScrollView;
     private TextView textEmpty;
+    private OrderHistoryListModel orderHistoryListModel;
+    private BucketDataListModel bucketDataListModel;
 
 
 
@@ -80,6 +82,13 @@ public class BucketFragment extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        orderHistoryListModel = new OrderHistoryListModel();
+        orderHistoryListModel.loadOrderHistory(getActivity().getApplicationContext());
+
+        bucketDataListModel = new BucketDataListModel();
+        bucketDataListModel.loadBucketData(getActivity().getApplicationContext());
+
     }
 
     @Override
@@ -137,6 +146,33 @@ public class BucketFragment extends Fragment
                     String dateTime = getCurrentDateTime();
 
                     Log.d("DATE", "onClick: " + dateTime);
+
+                    String mail = SecondActivity.getCurrentUser().getEmailAddress();
+
+                    /* Add order History to the Database */
+                    OrderHistory orderHistory = new OrderHistory(mail,dateTime, bucketDataList.getTotal(),deliveryFee);
+                    orderHistoryListModel.addOrderHistory(orderHistory);
+
+
+                    /* Add Bucket details to the Database */
+                    for ( BucketData bucket: bucketDataList.getBucketList() )
+                    {
+                        bucket.setEmailAddress(mail);
+                        bucket.setDateTime(dateTime);
+
+                        bucketDataListModel.addBucketData(bucket);
+                    }
+
+                    /* Empty the Bucket */
+                    bucketDataList.setTheBucketEmpty();
+
+                    if(bucketDataList.isEmpty())
+                    {
+                        bucketScrollView.setVisibility(View.GONE);
+
+                        textEmpty.setVisibility(View.VISIBLE);
+                    }
+
                 }
             }
         });
