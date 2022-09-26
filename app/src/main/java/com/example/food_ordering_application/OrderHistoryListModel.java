@@ -79,4 +79,20 @@ public class OrderHistoryListModel
 
     }
 
+
+    public ArrayList<OrderHistory> getOrderHistoryOfSpecificUser(String email)
+    {
+        ArrayList<OrderHistory> orderHistoryOfUser = new ArrayList<>();
+
+        for (OrderHistory orderHistory: orderHistoryList)
+        {
+               if(orderHistory.getEmailAddress().equals(email))
+               {
+                   orderHistoryOfUser.add(orderHistory);
+               }
+        }
+
+        return orderHistoryOfUser;
+    }
+
 }

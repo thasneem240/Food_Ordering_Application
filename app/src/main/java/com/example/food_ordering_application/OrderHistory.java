@@ -18,6 +18,8 @@ public class OrderHistory
         this.totalCost = totalCost;
         this.deliveryFee = deliveryFee;
 
+        bucketDataList = new ArrayList<>();
+
     }
 
 
@@ -69,5 +71,15 @@ public class OrderHistory
     public void setBucketDataList(ArrayList<BucketData> bucketDataList)
     {
         this.bucketDataList = bucketDataList;
+    }
+
+    public void addSpecificBucket(BucketData bucketData)
+    {
+        bucketDataList.add(bucketData);
+    }
+
+    public int getTotalBucket()
+    {
+        return bucketDataList.size();
     }
 }

@@ -83,4 +83,20 @@ public class BucketDataListModel
     }
 
 
+    public ArrayList<BucketData> getBucketListOfSpecificUser(String email)
+    {
+        ArrayList<BucketData> BucketsOfUser = new ArrayList<>();
+
+        for (BucketData bucketData: bucketDataList)
+        {
+            if(bucketData.getEmailAddress().equals(email))
+            {
+                BucketsOfUser.add(bucketData);
+            }
+        }
+
+        return BucketsOfUser;
+    }
+
+
 }

@@ -5,12 +5,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +33,11 @@ public class AccountFragment extends Fragment
     private String mParam1;
     private String mParam2;
     private RegUser regUser = null;
+    private ArrayList<OrderHistory> orderHistoryListOfUser;
+    private OrderHistoryListModel orderHistoryListModel;
+
+    private ArrayList<BucketData> bucketDataListOfUser;
+    private BucketDataListModel bucketDataListModel;
 
     public AccountFragment()
     {
@@ -62,10 +71,22 @@ public class AccountFragment extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        if (getArguments() != null)
+        {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        orderHistoryListModel = new OrderHistoryListModel();
+        orderHistoryListModel.loadOrderHistory(getActivity().getApplicationContext());
+        orderHistoryListOfUser = orderHistoryListModel.getOrderHistoryOfSpecificUser(regUser.getEmailAddress());
+
+        bucketDataListModel = new BucketDataListModel();
+        bucketDataListModel.loadBucketData(getActivity().getApplicationContext());
+        bucketDataListOfUser = bucketDataListModel.getBucketListOfSpecificUser(regUser.getEmailAddress());
+
+        setSpecificBucketListToOrderHistoryList();
+
     }
 
     @Override
@@ -117,5 +138,23 @@ public class AccountFragment extends Fragment
         String message = " You have Successfully Logged out! ";
 
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+
+    /* Add the relevant bucket tyo Relevant user History */
+
+    private void setSpecificBucketListToOrderHistoryList()
+    {
+        for (BucketData bucketData: bucketDataListOfUser)
+        {
+            for (OrderHistory orderHistory:orderHistoryListOfUser)
+            {
+                if(bucketData.getDateTime().equals(orderHistory.getDateTime()))
+                {
+                    orderHistory.addSpecificBucket(bucketData);
+                    break;
+                }
+            }
+        }
     }
 }
