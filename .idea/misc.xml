@@ -20,9 +20,11 @@
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_select_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/fragment_show_order_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/list_food.xml" value="0.365625" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/list_restaurant.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_bucket.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Thasneem2/AndroidStudioProjects/Food_Ordering_Application/app/src/main/res/layout/view_holder_order_history.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
