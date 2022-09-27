@@ -18,7 +18,6 @@
         android:textColor="@color/orange"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/orderHistoryRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
@@ -33,7 +32,9 @@
         app:layout_constraintBottom_toTopOf="@+id/textView5"
 
         app:layout_constraintTop_toBottomOf="@id/order_Title"
-        tools:layout_editor_absoluteX="10dp" />
+        tools:layout_editor_absoluteX="10dp"
+
+        />
 
     <TextView
         android:id="@+id/emptyMessage"
