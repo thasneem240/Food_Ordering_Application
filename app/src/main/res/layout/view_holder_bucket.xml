@@ -1,135 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="10dp"
-    android:elevation="2dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    >
 
-    <ImageView
-        android:id="@+id/foodImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@id/buttonRemove"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pizza_etc" />
-
-    <TextView
-        android:id="@+id/nameOfFood"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"
-        android:text="Name Of Food"
-        android:textColor="#373b54"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/foodImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/white"
+        android:padding="10dp"
+        android:backgroundTint="#A7FFEB"
+        >
 
-    <ImageView
-        android:id="@+id/minus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/foodImage"
-        app:layout_constraintStart_toStartOf="@+id/nameOfFood"
-        app:srcCompat="@drawable/minus" />
+        <ImageView
+            android:id="@+id/foodImage"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:srcCompat="@drawable/pizza_etc"
+            />
 
-    <TextView
-        android:id="@+id/itemTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="1"
-        android:textColor="#373b54"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/minus"
-        app:layout_constraintStart_toEndOf="@+id/minus"
-        app:layout_constraintTop_toTopOf="@+id/minus" />
+        <TextView
+            android:id="@+id/nameOfFood"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Name Of Food"
+            android:textAlignment="center"
+            android:textColor="#373b54"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/foodImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="25dp">
 
-    <ImageView
-        android:id="@+id/plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/itemTotal"
-        app:layout_constraintStart_toEndOf="@+id/itemTotal"
-        app:layout_constraintTop_toTopOf="@+id/itemTotal"
-        app:srcCompat="@drawable/plus" />
+        </TextView>
 
-    <TextView
-        android:id="@+id/eachItemCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:text="0"
-        android:textColor="#373b54"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/nameOfFood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nameOfFood" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LKR"
-        android:textColor="#FF3D00"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/eachItemCost"
-        app:layout_constraintEnd_toStartOf="@+id/eachItemCost"
-        app:layout_constraintTop_toTopOf="@+id/eachItemCost" />
+        <ImageView
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/foodImage"
+            android:layout_below="@id/nameOfFood"
+            android:layout_marginLeft="8dp"
 
-    <TextView
-        android:id="@+id/totItemCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="#373b54"
-        android:textSize="19dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/plus"
-        app:layout_constraintEnd_toEndOf="@+id/eachItemCost"
-        app:layout_constraintTop_toTopOf="@+id/plus" />
+            app:srcCompat="@drawable/minus" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LKR"
-        android:textColor="#FF3D00"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/totItemCost"
-        app:layout_constraintEnd_toStartOf="@+id/totItemCost"
-        app:layout_constraintTop_toTopOf="@+id/totItemCost" />
+            />
 
-    <Button
-        android:id="@+id/buttonRemove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="Remove"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="#16C3D8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodImage"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="5dp"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/itemTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#373b54"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/minus"
+            android:layout_below="@id/nameOfFood"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="7dp"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/itemTotal"
+            android:layout_below="@id/nameOfFood"
+            app:srcCompat="@drawable/plus"
+            android:layout_marginTop="1dp"
+            />
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LKR"
+            android:textColor="#FF3D00"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+           android:layout_toRightOf="@id/foodImage"
+
+            />
+
+        <TextView
+            android:id="@+id/eachItemCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#373b54"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/textView7"
+            android:layout_marginLeft="3dp"
+            />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LKR"
+            android:textColor="#FF3D00"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/plus"
+            android:layout_below="@id/nameOfFood"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+
+             />
+
+
+        <TextView
+            android:id="@+id/totItemCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#373b54"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/textView9"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/nameOfFood"
+            android:layout_marginLeft="3dp"
+            />
+
+
+        <Button
+            android:id="@+id/buttonRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Remove"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="#FF6D00"
+            android:layout_below="@id/foodImage"
+            android:layout_marginLeft="10dp"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
