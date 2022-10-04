@@ -138,8 +138,8 @@ public class RestDataListModel {
         /*****************************************************************************************/
 
 
-        RestData newRestaurant = new RestData(R.drawable.new_restaurant,"New Family Restaurant") ;
-        restDataList.add(newRestaurant);
+//        RestData newRestaurant = new RestData(R.drawable.new_restaurant,"New Family Restaurant") ;
+//        restDataList.add(newRestaurant);
 
         /*****************************************************************************************/
 
