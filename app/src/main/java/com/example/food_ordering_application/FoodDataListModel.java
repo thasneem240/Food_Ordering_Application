@@ -145,12 +145,12 @@ public class FoodDataListModel {
 
     private void setFoodListForRestaurant(ArrayList<FoodData> foodList, String restName) {
         if (restName.equals("KFC - Dehiwala")) {
-            foodList.add(new FoodData(R.drawable.kfc1, "KFC Buriyani - Regular", 470.00, restName));
+            foodList.add(new FoodData(R.drawable.kfc1, "KFC Buriyani-Regular", 470.00, restName));
             foodList.add(new FoodData(R.drawable.kfc2, "Hot drumlets 6Pcs", 1090.00, restName));
             foodList.add(new FoodData(R.drawable.kfc3, "Submarine Regular", 650.00, restName));
             foodList.add(new FoodData(R.drawable.kfc4, "Bucket/12Pc", 5650.00, restName));
             foodList.add(new FoodData(R.drawable.kfc5, "Chicken 1Pc", 580.00, restName));
-            foodList.add(new FoodData(R.drawable.kfc6, "Vegie burger", 780.00, restName));
+            foodList.add(new FoodData(R.drawable.kfc6, "Veg burger", 780.00, restName));
             foodList.add(new FoodData(R.drawable.kfc7, "Pepsi 500ML", 200.00, restName));
             foodList.add(new FoodData(R.drawable.kfc8, "7 Up 500ML", 250.00, restName));
         } else {
