@@ -133,6 +133,11 @@ public class FoodDataListModel {
 
         /* Have to Add For New Restaurant Food List */
 
+        /**************************************************************************************/
+
+        setFoodListForRestaurant(foodList, "New Family Restaurant");
+
+        /**************************************************************************************/
 
         return foodList;
 
@@ -199,8 +204,27 @@ public class FoodDataListModel {
                                 foodList.add(new FoodData(R.drawable.elite8, "Fresh Lime Juice", 352.00, restName));
                                 foodList.add(new FoodData(R.drawable.elite9, "Chicken Lollipop", 869.00, restName));
                                 foodList.add(new FoodData(R.drawable.elite10, "prawn 65", 1309.00, restName));
-                            } else {
+                            } else
+                            {
                                 // For newly Added Food DATA
+
+                                if(restName.equals("New Family Restaurant"))
+                                {
+                                    /*******************************************************************************************************/
+
+                                    foodList.add(new FoodData(R.drawable.new_eggburger,"Egg Burger", 600.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_whiet,"Whiet Ceramic", 800.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_vegetable_salad,"Vegetable Salad", 700.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_plain_salad,"Plain Salad", 900.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_pizza,"Pizza", 1600.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_eggpizza,"Egg Pizza", 1800.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_sandwich,"Sandwich", 1000.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_friedrice,"Fried Rice & Kebab", 1500.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_burger_eith_fries,"Burger with Fries", 950.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_pastha,"Pasta", 1100.00, restName));
+
+                                    /*******************************************************************************************************/
+                                }
                             }
 
                         }

@@ -135,6 +135,18 @@ public class RestDataListModel {
 
         //Have to Add For New Restaurant List
 
+        /*****************************************************************************************/
+
+
+        RestData newRestaurant = new RestData(R.drawable.new_restaurant,"New Family Restaurant") ;
+        restDataList.add(newRestaurant);
+
+        /*****************************************************************************************/
+
+
+
+
+
         Log.d("Info", "I'm Exited From RestDataListModel : getInitialRestData Method ");
 
         return restDataList;
