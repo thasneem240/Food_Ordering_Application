@@ -213,7 +213,7 @@ public class FoodDataListModel {
                                     /*******************************************************************************************************/
 
                                     foodList.add(new FoodData(R.drawable.new_eggburger,"Egg Burger", 600.00, restName));
-                                    foodList.add(new FoodData(R.drawable.new_whiet,"Whiet Ceramic", 800.00, restName));
+                                    foodList.add(new FoodData(R.drawable.new_noodles,"Noodles", 800.00, restName));
                                     foodList.add(new FoodData(R.drawable.new_vegetable_salad,"Vegetable Salad", 700.00, restName));
                                     foodList.add(new FoodData(R.drawable.new_plain_salad,"Plain Salad", 900.00, restName));
                                     foodList.add(new FoodData(R.drawable.new_pizza,"Pizza", 1600.00, restName));
