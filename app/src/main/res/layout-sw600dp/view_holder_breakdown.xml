@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/breakFoodImage"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:src="@drawable/kfc6">
+
+        </ImageView>
+
+
+        <TextView
+            android:id="@+id/breakFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/breakFoodImage"
+            android:paddingBottom="5dp"
+            android:text="Burger"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/break_TotalFoodItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakFoodName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/breakFoodImage"
+            android:paddingBottom="20dp"
+            android:text="3 items"
+            android:textSize="20sp"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/multiply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakFoodName"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/break_TotalFoodItem"
+            android:text="*"
+            android:textColor="@color/orange"
+            android:textSize="15sp"
+
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/breakFoodPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakFoodName"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/multiply"
+            android:text="LKR 800.00"
+            android:textColor="#D50E74"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/breakFoodTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/break_TotalFoodItem"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/breakFoodImage"
+            android:text="LKR 2400.00"
+            android:textSize="22sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -12,37 +12,37 @@
         android:id="@+id/titleofApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:textColor="@color/orange"
-        android:textStyle="bold"
         android:text="Food Delivery App"
-        android:textSize="40dp"
-        />
+        android:textColor="@color/orange"
+        android:textSize="70sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/titleofApp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="40dp"
+
         android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/buttonStart"
-        android:text="Get Started"
-        android:textColor="@color/background1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:backgroundTint="#880E4F"
-        android:layout_margin="60dp"
-
-        />
+        android:layout_marginBottom="80dp"
+        android:text="Get Started"
+        android:textColor="@color/background1"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F50057"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageOfRest"
+            android:layout_width="380dp"
+            android:layout_height="380dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/kfc"
+            />
+
+        <TextView
+            android:id="@+id/nameOfSelectRest"
+            android:layout_width="wrap_content"
+            android:layout_height="90sp"
+            android:fontFamily="@font/baloo"
+            android:text="@string/kfc_dehiwala"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            android:layout_marginTop="3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/imageOfRest"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
