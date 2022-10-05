@@ -33,6 +33,8 @@ public class SecondActivity extends AppCompatActivity
     private FoodDataListModel foodDataListModel;
     private List<FoodData> specialRandomFoodList;
 
+    private List<CategoryData> categoryDataList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -53,6 +55,9 @@ public class SecondActivity extends AppCompatActivity
         ImageView imageBucket = findViewById(R.id.imageBucket);
         ImageView imageAccount = findViewById(R.id.imageAccount);
         RecyclerView specialMenuRecyclerView = findViewById(R.id.specialMenuRecyclerView);
+
+        /* Only for Tablets */
+        RecyclerView categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
 
         Intent intent = getIntent();
         loginStatus = intent.getStringExtra(STATUS);
@@ -110,6 +115,24 @@ public class SecondActivity extends AppCompatActivity
 
         // Hook it up
         specialMenuRecyclerView.setAdapter(adapter);
+
+
+        /* tablet User can only view this recyclerView */
+        if(categoryRecyclerView != null)
+        {
+            loadCategory();
+
+            categoryRecyclerView.setLayoutManager(new LinearLayoutManager
+                    (this,LinearLayoutManager.HORIZONTAL,false));
+
+            //Create Adapter for the recyclerview
+            SecondActivity.MyAdapterForTablet adapterTablet = new SecondActivity.MyAdapterForTablet();
+
+            // Hook it up
+            categoryRecyclerView.setAdapter(adapterTablet);
+
+
+        }
 
 
 
@@ -224,6 +247,82 @@ public class SecondActivity extends AppCompatActivity
             return specialRandomFoodList.size();
         }
     }
+
+
+
+
+    /* Private inner Class for View holder */
+
+    private class MyDataVHolderForTablet extends RecyclerView.ViewHolder
+    {
+        ImageView category_FoodImage;
+        TextView category_Name;
+
+        public MyDataVHolderForTablet(@NonNull View itemView)
+        {
+            super(itemView);
+
+            category_FoodImage = itemView.findViewById(R.id.category_FoodImage);
+            category_Name = itemView.findViewById(R.id.category_Name);
+        }
+    }
+
+
+    /* Private inner Class for Adapter */
+
+    private class MyAdapterForTablet extends RecyclerView.Adapter<SecondActivity.MyDataVHolderForTablet>
+    {
+
+        @NonNull
+        @Override
+        public MyDataVHolderForTablet onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+        {
+            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+            View view = layoutInflater.inflate(R.layout.view_holder_category,parent,false);
+
+
+            SecondActivity.MyDataVHolderForTablet myDataVHolderForTablet =
+                    new SecondActivity.MyDataVHolderForTablet(view);
+
+            return  myDataVHolderForTablet;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyDataVHolderForTablet holder, int position)
+        {
+
+            ImageView category_FoodImage = holder.category_FoodImage;
+            TextView category_Name = holder.category_Name;
+
+            CategoryData singleCategoryData = categoryDataList.get(position);
+
+            category_FoodImage.setImageResource(singleCategoryData.getCategoryImageId());
+            category_Name.setText(singleCategoryData.getCategoryName());
+
+
+        }
+
+        @Override
+        public int getItemCount()
+        {
+            return categoryDataList.size();
+        }
+    }
+
+
+    private void loadCategory()
+    {
+        categoryDataList = new ArrayList<>();
+
+        categoryDataList.add(new CategoryData(R.drawable.cat_1, "PIZZA"));
+        categoryDataList.add(new CategoryData(R.drawable.cat_2, "BURGER"));
+        categoryDataList.add(new CategoryData(R.drawable.cat_3, "HOTDOG"));
+        categoryDataList.add(new CategoryData(R.drawable.cat_4, "DRINK"));
+        categoryDataList.add(new CategoryData(R.drawable.cat_5, "DONUT"));
+
+    }
+
 
 
 }

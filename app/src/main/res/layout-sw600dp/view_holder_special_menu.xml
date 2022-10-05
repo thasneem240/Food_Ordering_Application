@@ -19,12 +19,12 @@
         <TextView
             android:id="@+id/specialFoodName"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:text="Burger"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
 
@@ -35,7 +35,7 @@
         <ImageView
             android:id="@+id/special_FoodImage"
             android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_height="130dp"
             android:layout_below="@id/specialFoodName"
             android:layout_centerHorizontal="true"
             android:src="@drawable/kfc6">

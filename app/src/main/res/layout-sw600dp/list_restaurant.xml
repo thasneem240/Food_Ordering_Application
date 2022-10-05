@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/imageOfRest"
-            android:layout_width="380dp"
-            android:layout_height="380dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/kfc"
             />
@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/nameOfSelectRest"
             android:layout_width="wrap_content"
-            android:layout_height="90sp"
+            android:layout_height="70sp"
             android:fontFamily="@font/baloo"
             android:text="@string/kfc_dehiwala"
             android:textAlignment="center"
